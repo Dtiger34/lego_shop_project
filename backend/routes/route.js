@@ -31,21 +31,21 @@ router.put('/categories/:id', jwtConfig.requireAdmin, categoryController.updateC
 router.delete('/categories/:id', jwtConfig.requireAdmin, categoryController.deleteCategory)
 
 // user routes
+// IMPORTANT: /users/profile MUST come before /users/:id to avoid route collision
+router.get('/users/profile', jwtConfig.requireAuth, userController.getProfile)
+router.put('/users/profile', jwtConfig.requireAuth, userController.updateProfile)
 router.get('/users', jwtConfig.requireAdmin, userController.getUsers)
 router.get('/users/:id', jwtConfig.requireAdmin, userController.getUserById)
 router.post('/users', jwtConfig.requireAdmin, userController.createUser)
 router.put('/users/:id', jwtConfig.requireAdmin, userController.updateUser)
 router.delete('/users/:id', jwtConfig.requireAdmin, userController.deleteUser)
 
-// profile (current user)
-router.get('/users/profile', jwtConfig.requireAuth, userController.getProfile)
-router.put('/users/profile', jwtConfig.requireAuth, userController.updateProfile)
-
 // order routes
 router.post('/orders', orderController.createOrder)
-router.get('/orders', orderController.getUserOrders)
+router.get('/orders', jwtConfig.requireAuth, orderController.getUserOrders)
+router.get('/orders/all', jwtConfig.requireAdmin, orderController.getAllOrders)
 router.get('/orders/:id', orderController.getOrderById)
-router.put('/orders/:id', orderController.updateOrderStatus)
+router.put('/orders/:id', jwtConfig.requireAdmin, orderController.updateOrderStatus)
 router.delete('/orders/:id', orderController.cancelOrder)
 
 // review routes

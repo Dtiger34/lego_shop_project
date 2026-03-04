@@ -1,20 +1,39 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import './Header.css';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [user, setUser] = useState(null);
   const { getTotalItems } = useCart();
   const totalItems = getTotalItems();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if user is logged in
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      setUser(JSON.parse(userData));
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    setUser(null);
+    navigate('/');
+  };
+
+  const isAdmin = user?.role === 'admin';
 
   return (
     <header className="site-header">
       <nav className="header-inner">
         {/* Logo */}
         <Link to="/" className="brand">
-          <span className="brand-icon">🧱</span>
-          <span className="brand-name">Lego Shop</span>
+          <img src="/logo_viettich.jpg" alt="Việt Tích Logo" className="brand-logo" />
+          <span className="brand-name">Việt Tích</span>
         </Link>
 
         {/* Navigation links - Desktop */}
@@ -22,11 +41,19 @@ export default function Header() {
           <a href="/#features">Tại sao chọn</a>
           <Link to="/products">Sản phẩm</Link>
           <a href="/#contact">Liên hệ</a>
+          {isAdmin && <Link to="/admin/dashboard">Quản trị</Link>}
         </div>
 
         {/* CTA Buttons - Desktop */}
         <div className="header-actions">
-          <a href="/login" className="btn-login">Đăng nhập</a>
+          {user ? (
+            <>
+              <span className="user-greeting">Xin chào, {user.name}</span>
+              <button onClick={handleLogout} className="btn-logout">Đăng xuất</button>
+            </>
+          ) : (
+            <a href="/login" className="btn-login">Đăng nhập</a>
+          )}
           <Link to="/cart" className="btn-cart">
             🛒 Giỏ hàng
             {totalItems > 0 && <span className="cart-badge">{totalItems}</span>}
@@ -51,8 +78,18 @@ export default function Header() {
           <a href="/#features" onClick={() => setIsMenuOpen(false)}>Tại sao chọn</a>
           <Link to="/products" onClick={() => setIsMenuOpen(false)}>Sản phẩm</Link>
           <a href="/#contact" onClick={() => setIsMenuOpen(false)}>Liên hệ</a>
+          {isAdmin && (
+            <Link to="/admin/dashboard" onClick={() => setIsMenuOpen(false)}>Quản trị</Link>
+          )}
           <div className="mobile-actions">
-            <a href="/login" className="btn-login-mobile">Đăng nhập</a>
+            {user ? (
+              <>
+                <span className="user-greeting">Xin chào, {user.name}</span>
+                <button onClick={handleLogout} className="btn-logout-mobile">Đăng xuất</button>
+              </>
+            ) : (
+              <a href="/login" className="btn-login-mobile">Đăng nhập</a>
+            )}
             <Link to="/cart" className="btn-cart-mobile">
               🛒 Giỏ hàng
               {totalItems > 0 && <span className="cart-badge">{totalItems}</span>}

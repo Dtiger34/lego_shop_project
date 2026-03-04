@@ -36,13 +36,13 @@
   align-items: center;
   justify-content: space-between;
   padding: 2rem;
-  border-bottom: 2px solid #ffe0e0;
-  background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+  border-bottom: 2px solid #bdc3c7;
+  background: linear-gradient(135deg, #e0e6ed 0%, #c9d3dc 100%);
 }
 
 .shipping-modal-header h2 {
   margin: 0;
-  color: #E3000B;
+  color: #34495e;
   font-size: 1.5rem;
 }
 
@@ -61,8 +61,8 @@
 }
 
 .modal-close:hover {
-  color: #E3000B;
-  background: rgba(227, 0, 11, 0.1);
+  color: #34495e;
+  background: rgba(44, 62, 80, 0.1);
   border-radius: 0.5rem;
 }
 
@@ -99,7 +99,7 @@
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #1C1C2E;
+  color: #1e2a3a;
   font-weight: 600;
   font-size: 0.95rem;
 }
@@ -107,7 +107,7 @@
 .form-group input,
 .form-group textarea {
   padding: 0.75rem 1rem;
-  border: 2px solid #ffe0e0;
+  border: 2px solid #bdc3c7;
   border-radius: 0.5rem;
   font-family: inherit;
   font-size: 1rem;
@@ -117,8 +117,8 @@
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #E3000B;
-  box-shadow: 0 0 0 3px rgba(227, 0, 11, 0.1);
+  border-color: #34495e;
+  box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.1);
 }
 
 .form-group input::placeholder,
@@ -136,7 +136,7 @@
   gap: 1rem;
   margin-top: 2rem;
   padding-top: 2rem;
-  border-top: 2px solid #ffe0e0;
+  border-top: 2px solid #bdc3c7;
 }
 
 .btn-cancel,
@@ -152,24 +152,24 @@
 }
 
 .btn-cancel {
-  background: #fff5f5;
-  color: #1C1C2E;
-  border: 2px solid #ffe0e0;
+  background: #e0e6ed;
+  color: #1e2a3a;
+  border: 2px solid #bdc3c7;
 }
 
 .btn-cancel:hover:not(:disabled) {
-  background: #ffe8e8;
-  border-color: #E3000B;
+  background: #c9d3dc;
+  border-color: #34495e;
 }
 
 .btn-submit {
-  background: linear-gradient(to right, #E3000B, #ff4444);
+  background: linear-gradient(to right, #34495e, #4a5f7f);
   color: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .btn-submit:hover:not(:disabled) {
-  box-shadow: 0 10px 15px rgba(227, 0, 11, 0.3);
+  box-shadow: 0 10px 15px rgba(44, 62, 80, 0.3);
   transform: translateY(-2px);
 }
 
@@ -203,3 +203,4 @@
     flex-direction: column-reverse;
   }
 }
+

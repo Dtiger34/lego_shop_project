@@ -2,38 +2,38 @@ export default function Features() {
   const features = [
     {
       icon: '🧱',
-      title: '100% Hàng chính hãng',
-      description: 'Tất cả sản phẩm đều là Lego chính hãng, có tem xác nhận, được nhập khẩu từ nhà phân phối uy tín.',
+      title: 'Chất lượng như nghề thủ công',
+      description: 'Như người thợ xưa tỉ mỉ từng chi tiết, mỗi mảnh Lego đều được kiểm định chặt chẽ, nguyên vẹn và chính hãng.',
       color: 'lego-red',
     },
     {
       icon: '🎨',
-      title: 'Đa dạng chủ đề',
-      description: 'City, Technic, Star Wars, Marvel, Creator, Ninjago — hàng trăm chủ đề phù hợp cho mọi độ tuổi.',
+      title: 'Đa dạng như bức tranh lịch sử',
+      description: 'Từ kiến trúc đến khoa học, từ thiên nhiên đến vũ trụ — hàng trăm chủ đề để khám phá và sáng tạo.',
       color: 'lego-yellow',
     },
     {
       icon: '🧩',
-      title: 'Kích thích sáng tạo',
-      description: 'Lego phát triển tư duy không gian, khả năng giải quyết vấn đề và sự sáng tạo từ nhỏ.',
+      title: 'Nuôi dưỡng tư duy kiên trì',
+      description: 'Như tổ tiên dạy: "Có công mài sắt có ngày nên kim". Lego rèn luyện sự kiên nhẫn, tư duy logic và khéo léo từ nhỏ.',
       color: 'lego-navy',
     },
     {
       icon: '🏆',
-      title: 'Chất lượng bền bỉ',
-      description: 'Mảnh ghép Lego được sản xuất với độ chính xác cao, không bong tróc màu, an toàn cho trẻ em.',
+      title: 'Bền bỉ qua thời gian',
+      description: 'Sản phẩm được chế tác với độ chính xác cao, truyền từ thế hệ này sang thế hệ khác.',
       color: 'lego-orange',
     },
     {
       icon: '🚚',
-      title: 'Giao hàng nhanh toàn quốc',
-      description: 'Vận chuyển đóng gói cẩn thận, giao hàng nhanh trên toàn quốc. Hỗ trợ đổi trả trong 7 ngày.',
+      title: 'Tận tâm trong từng gói hàng',
+      description: 'Đóng gói chu đáo, vận chuyển cẩn thận đến tay khách hàng khắp mọi miền đất nước.',
       color: 'lego-pink',
     },
     {
       icon: '🎁',
-      title: 'Quà tặng lý tưởng',
-      description: 'Lego là món quà sinh nhật, Giáng sinh hoàn hảo — đóng hộp đẹp, kèm thiệp theo yêu cầu.',
+      title: 'Món quà tri thức',
+      description: 'Hơn cả vật chất, Lego là món quà giáo dục ý nghĩa — truyền cảm hứng và kiến thức cho thế hệ trẻ.',
       color: 'lego-blue',
     },
   ];
@@ -41,10 +41,10 @@ export default function Features() {
   return (
     <section className="features" id="features">
       <div className="features-header">
-        <span className="section-badge">TẠI SAO CHỌN LEGO SHOP</span>
-        <h2 className="section-title">Những lý do để yêu thích Lego</h2>
+        <span className="section-badge">TRUYỀN THỐNG & HIỆN ĐẠI</span>
+        <h2 className="section-title">Giá trị chúng tôi gìn giữ</h2>
         <p className="section-subtitle">
-          Sản phẩm Lego của chúng tôi không chỉ vui, mà còn phát triển tư duy sáng tạo cho mọi lứa tuổi
+          Kế thừa tinh thần nghề nhân và sự tỉ mỉ của cha ông, chúng tôi mang đến đồ chơi chất lượng giúp trẻ thơ phát triển tư duy và kỹ năng
         </p>
       </div>
 

@@ -66,10 +66,10 @@ export default function ProductDemo() {
     <section className="product-demo" id="products">
       <div className="section-container">
         <div className="section-header">
-          <span className="section-badge">KHÁM PHÁ BỘ SƯU TẬP</span>
-          <h2 className="section-title">Sản phẩm Lego nổi bật & chính hãng</h2>
-          <p className="section-subtitle">
-            Mỗi bộ Lego đều được chọn lọc kỹ càng, đảm bảo chính hãng với tiêu chuẩn chất lượng cao nhất
+          <span className="section-badge">BỘ SƯU TẬP ĐẶC BIỆT</span>
+          <h2 className="section-title">Sản phẩm được chọn lọc tỉ mỉ</h2>
+          <p className="section-title">
+            Như người thợ xưa chọn nguyên liệu, mỗi bộ Lego đều được tuyển chọn kỹ lưỡng để đảm bảo chất lượng tốt nhất
           </p>
         </div>
 

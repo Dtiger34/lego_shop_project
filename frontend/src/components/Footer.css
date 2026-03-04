@@ -1,7 +1,7 @@
 /* ========== FOOTER STYLES ========== */
 .site-footer {
-  background: linear-gradient(to bottom, #1C1C2E, #0d0d1a);
-  color: rgba(255, 240, 240, 1);
+  background: linear-gradient(to bottom, #2c3e50, #1e2a3a);
+  color: rgba(224, 230, 237, 1);
   padding: 0;
 }
 
@@ -46,14 +46,21 @@
   font-size: 2rem;
 }
 
+.footer-logo-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
 .footer-name {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #FFD700;
+  color: #d4a843;
 }
 
 .footer-description {
-  color: rgba(255, 200, 200, 1);
+  color: rgba(201, 211, 220, 1);
   margin: 0;
 }
 
@@ -65,7 +72,7 @@
 .social-link {
   width: 2.5rem;
   height: 2.5rem;
-  background: #E3000B;
+  background: #34495e;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -76,7 +83,7 @@
 }
 
 .social-link:hover {
-  background: #ff4444;
+  background: #2c3e50;
   transform: scale(1.1);
 }
 
@@ -89,7 +96,7 @@
 .footer-heading {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #FFD700;
+  color: #d4a843;
   margin: 0 0 1rem 0;
 }
 
@@ -103,7 +110,7 @@
 }
 
 .footer-list a {
-  color: rgba(255, 200, 200, 1);
+  color: rgba(201, 211, 220, 1);
   text-decoration: none;
   transition: color 0.3s;
 }
@@ -126,18 +133,18 @@
 
 .contact-item p {
   margin: 0;
-  color: rgba(255, 200, 200, 1);
+  color: rgba(201, 211, 220, 1);
 }
 
 .contact-label {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #FFD700 !important;
+  color: #d4a843 !important;
   margin-bottom: 0.25rem !important;
 }
 
 .contact-item a {
-  color: rgba(255, 200, 200, 1);
+  color: rgba(201, 211, 220, 1);
   text-decoration: none;
   transition: color 0.3s;
 }
@@ -147,7 +154,7 @@
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(227, 0, 11, 0.3);
+  border-top: 1px solid rgba(44, 62, 80, 0.3);
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
@@ -165,7 +172,7 @@
 }
 
 .footer-copyright {
-  color: rgba(255, 200, 200, 1);
+  color: rgba(201, 211, 220, 1);
   font-size: 0.875rem;
   margin: 0;
 }
@@ -176,7 +183,7 @@
 }
 
 .footer-legal a {
-  color: rgba(255, 200, 200, 1);
+  color: rgba(201, 211, 220, 1);
   text-decoration: none;
   font-size: 0.875rem;
   transition: color 0.3s;
@@ -185,3 +192,4 @@
 .footer-legal a:hover {
   color: white;
 }
+

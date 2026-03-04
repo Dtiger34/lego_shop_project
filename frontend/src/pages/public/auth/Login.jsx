@@ -18,7 +18,13 @@ export default function Login() {
       const { user, token } = await login(email, password);
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
-      navigate('/');
+      
+      // Redirect based on role
+      if (user.role === 'admin') {
+        navigate('/admin/dashboard');
+      } else {
+        navigate('/');
+      }
     } catch (err) {
       setError(err.message);
     } finally {
@@ -30,8 +36,9 @@ export default function Login() {
     <div className="auth-page">
       <div className="auth-card">
         <div className="auth-header">
-          <span className="auth-icon">🧱</span>
-          <h2>Đăng nhập Lego Shop</h2>
+          <img src="/logo_viettich.jpg" alt="Việt Tích Logo" className="auth-logo" />
+          <h2>Đăng nhập Việt Tích</h2>
+          <p>Chào mừng bạn quay trở lại</p>
         </div>
         {error && <div className="auth-error">{error}</div>}
         <form onSubmit={handleSubmit} className="auth-form">

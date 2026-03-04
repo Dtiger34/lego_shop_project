@@ -10,11 +10,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="footer-brand">
             <div className="footer-logo">
-              <span className="footer-icon">🧱</span>
-              <span className="footer-name">Lego Shop</span>
+              <img src="/logo_viettich.jpg" alt="Việt Tích Logo" className="footer-logo-img" />
+              <span className="footer-name">Việt Tích</span>
             </div>
             <p className="footer-description">
-              Lego chính hãng, đa dạng mẫu mã, dành cho mọi lứa tuổi.
+              Giữ gìn tinh thần xây dựng của cha ông, truyền cảm hứng cho thế hệ tương lai.
             </p>
             <div className="footer-social">
               <a href="#" className="social-link" aria-label="Facebook">f</a>
@@ -51,7 +51,7 @@ export default function Footer() {
             <div className="contact-info">
               <div className="contact-item">
                 <p className="contact-label">Địa chỉ</p>
-                <p>123 Đường Lego, Q. 1, TP. HCM</p>
+                <p>Phục vụ tại khắp mọi miền đất nước</p>
               </div>
               <div className="contact-item">
                 <p className="contact-label">Email</p>
@@ -68,7 +68,7 @@ export default function Footer() {
         {/* Bottom section */}
         <div className="footer-bottom">
           <p className="footer-copyright">
-            &copy; {currentYear} Lego Shop. All rights reserved. Đồ chơi sáng tạo cho mọi lứa tuổi.
+            &copy; {currentYear} Việt Tích. All rights reserved. Truyền cảm hứng xây dựng và sáng tạo cho thế hệ Việt Nam.
           </p>
           <div className="footer-legal">
             <a href="/privacy">Chính sách riêng tư</a>

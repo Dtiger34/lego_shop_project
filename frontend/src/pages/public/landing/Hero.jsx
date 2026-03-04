@@ -12,15 +12,15 @@ export default function Hero() {
           <div className="hero-content animate-fade-in">
             <div className="hero-text">
               <span className="hero-badge">
-                🧱 Đồ chơi sáng tạo & Chính hãng toàn cầu
+                🧱 Tinh thần xây dựng & Tâm huyết truyền thống
               </span>
               <h1 className="hero-title">
-                <span className="hero-gradient">Lego chính hãng,
+                <span className="hero-gradient">Nối dài di sản,
                   <br />
-                Sáng tạo không giới hạn</span>
+                Xây dựng tương lai</span>
               </h1>
               <p className="hero-description">
-                Khám phá bộ sưu tập Lego đa dạng — từ City, Technic đến Star Wars và Creator. Mỗi bộ đồ chơi là một hành trình sáng tạo thú vị cho mọi lứa tuổi.
+                Kế thừa tinh thần kiên trì của tổ tiên - từng viên gạch xây nên đền đài trường tồn, chúng tôi mang đến những bộ Lego chính hãng để thế hệ trẻ học hỏi về sự sáng tạo, kiên nhẫn và khéo léo của cha ông.
               </p>
             </div>
 
@@ -38,15 +38,15 @@ export default function Hero() {
             <div className="hero-stats">
               <div className="stat">
                 <p className="stat-number">1000+</p>
-                <p className="stat-label">Khách hàng hài lòng</p>
+                <p className="stat-label">Gia đình tin tưởng</p>
               </div>
               <div className="stat">
                 <p className="stat-number">100%</p>
-                <p className="stat-label">Chính hãng, có tem bảo đảm</p>
+                <p className="stat-label">Chính hãng, nguồn gốc rõ ràng</p>
               </div>
               <div className="stat">
                 <p className="stat-number">200+</p>
-                <p className="stat-label">Bộ sản phẩm đa dạng</p>
+                <p className="stat-label">Mô hình đa dạng</p>
               </div>
             </div>
           </div>
@@ -56,9 +56,9 @@ export default function Hero() {
             <div className="hero-image-glow"></div>
             <div className="hero-image">
               <div className="image-placeholder">
-                <div className="bamboo-icon">🧱</div>
-                <p className="image-title">Lego Shop</p>
-                <p className="image-subtitle">Xây dựng ước mơ từng mảnh ghép</p>
+                <img src="/logo_viettich.jpg" alt="Việt Tích Logo" className="hero-logo" />
+                <p className="image-title">Việt Tích</p>
+                <p className="image-subtitle">Từng viên gạch - Một tương lai</p>
               </div>
             </div>
           </div>

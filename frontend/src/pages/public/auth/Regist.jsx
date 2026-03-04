@@ -29,8 +29,9 @@ export default function Regist() {
     <div className="auth-page">
       <div className="auth-card">
         <div className="auth-header">
-          <span className="auth-icon">🧱</span>
-          <h2>Đăng ký Lego Shop</h2>
+          <img src="/logo_viettich.jpg" alt="Việt Tích Logo" className="auth-logo" />
+          <h2>Đăng ký Việt Tích</h2>
+          <p>Tạo tài khoản mới</p>
         </div>
         {error && <div className="auth-error">{error}</div>}
         <form onSubmit={handleSubmit} className="auth-form">

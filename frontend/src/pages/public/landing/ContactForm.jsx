@@ -15,7 +15,7 @@ export default function ContactForm() {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log('Form submitted:', formData)
-    alert('Cảm ơn bạn đã liên hệ! Đội ngũ Lego Shop sẽ phản hồi sớm nhất.')
+    alert('Cảm ơn bạn đã liên hệ! Đội ngũ Việt Tích sẽ phản hồi sớm nhất.')
     setFormData({ name: '', email: '', phone: '', message: '' })
   }
 
@@ -23,8 +23,8 @@ export default function ContactForm() {
     <section className="contact-form" id="contact">
       <div className="section-container">
         <div className="section-header">
-          <h2 className="section-title">Liên Hệ Với Chúng Tôi</h2>
-          <p className="section-subtitle">Gửi thông tin để được tư vấn và hỗ trợ miễn phí</p>
+          <h2 className="section-title">Kết Nối Với Chúng Tôi</h2>
+          <p className="section-title">Chúng tôi luôn sẵn sàng lắng nghe và tư vấn tận tâm cho quý khách hàng</p>
         </div>
         <form onSubmit={handleSubmit} className="form-wrapper">
           <div className="form-row">

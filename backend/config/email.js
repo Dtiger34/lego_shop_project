@@ -23,7 +23,7 @@ const sendCustomerConfirmationEmail = async (customerEmail, customerName, order)
       to: customerEmail,
       subject: `Xác nhận đơn hàng #${order._id}`,
       html: `
-        <h2>Cảm ơn ${customerName} đã mua hàng tại Lego Shop!</h2>
+        <h2>Cảm ơn ${customerName} đã mua hàng tại Việt Tích!</h2>
         <ul>${itemsList}</ul>
         <p><strong>Tổng tiền:</strong> ${order.totalPrice.toLocaleString('vi-VN')} đ</p>
       `,
@@ -46,7 +46,7 @@ const sendAdminNotificationEmail = async (order, customerName, customerEmail) =>
       to: process.env.ADMIN_EMAIL,
       subject: `[Đơn hàng mới] #${order._id}`,
       html: `
-        <h2>Lego Shop - Đơn hàng mới</h2>
+        <h2>Việt Tích - Đơn hàng mới</h2>
         <p>Khách: ${customerName}</p>
         <p>Email: ${customerEmail}</p>
         <p>Tổng: ${order.totalPrice.toLocaleString('vi-VN')} đ</p>

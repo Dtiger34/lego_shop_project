@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { CartProvider, useCart } from './context/CartContext'
 import Layout from './components/Layout'
 import Toast from './components/Toast'
@@ -11,6 +11,19 @@ import Cart from './pages/public/cart/Cart'
 import Login from './pages/public/auth/Login';
 import Regist from './pages/public/auth/Regist';
 import Forgot from './pages/public/auth/Forgot';
+import Dashboard from './pages/admin/Dashboard';
+
+// Protected Route for Admin
+function AdminRoute({ children }) {
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+  const isAdmin = user.role === 'admin';
+  
+  if (!isAdmin) {
+    return <Navigate to="/login" replace />;
+  }
+  
+  return children;
+}
 
 function AppContent() {
   const { toast, closeToast, modal, closeModal, addToCart, shippingModal, closeShippingModal, cart, clearCart } = useCart();
@@ -51,16 +64,31 @@ function AppContent() {
   return (
     <>
       <BrowserRouter>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Regist />} />
-            <Route path="/forgot-password" element={<Forgot />} />
-          </Routes>
-        </Layout>
+        <Routes>
+          {/* Admin Routes - No Layout */}
+          <Route 
+            path="/admin/dashboard" 
+            element={
+              <AdminRoute>
+                <Dashboard />
+              </AdminRoute>
+            } 
+          />
+          
+          {/* Public Routes - With Layout */}
+          <Route path="*" element={
+            <Layout>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Regist />} />
+                <Route path="/forgot-password" element={<Forgot />} />
+              </Routes>
+            </Layout>
+          } />
+        </Routes>
       </BrowserRouter>
       <ProductModal 
         show={modal.show}

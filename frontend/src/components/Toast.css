@@ -16,7 +16,7 @@
   border-radius: 1rem;
   padding: 1rem 1.5rem;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-  border: 2px solid #E3000B;
+  border: 2px solid #34495e;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -33,7 +33,7 @@
 .toast-icon {
   width: 2.5rem;
   height: 2.5rem;
-  background: linear-gradient(135deg, #E3000B, #ff4444);
+  background: linear-gradient(135deg, #34495e, #4a5f7f);
   color: white;
   border-radius: 50%;
   display: flex;
@@ -60,7 +60,7 @@
 
 .toast-title {
   font-weight: 700;
-  color: #E3000B;
+  color: #34495e;
   font-size: 1rem;
 }
 
@@ -121,3 +121,4 @@
     max-width: 150px;
   }
 }
+

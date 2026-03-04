@@ -28,8 +28,9 @@ export default function Forgot() {
     <div className="auth-page">
       <div className="auth-card">
         <div className="auth-header">
-          <span className="auth-icon">🔒</span>
+          <img src="/logo_viettich.jpg" alt="Việt Tích Logo" className="auth-logo" />
           <h2>Quên mật khẩu</h2>
+          <p>Nhập email để đặt lại mật khẩu</p>
         </div>
         {error && <div className="auth-error">{error}</div>}
         {message && <div className="auth-success">{message}</div>}
