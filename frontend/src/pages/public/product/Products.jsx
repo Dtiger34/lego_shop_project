@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useCart } from '../../../context/CartContext';
 import { getAllProducts } from '../../../service/productAPI';
 import { getAllCategories } from '../../../service/categoryAPI';
-import { STATIC_BASE_URL } from '../../../service/config';
+import { API_BASE_URL } from '../../../service/config';
 import './Products.css';
 
 export default function Products() {
@@ -169,7 +169,7 @@ export default function Products() {
 
                     <div className="product-image-page">
                       <img
-                        src={`${STATIC_BASE_URL}${product.images[0]}`}
+                        src={`${API_BASE_URL.replace('/api/v1', '')}${product.images[0]}`}
                         alt={product.name}
                         className="product-img"
                         onError={(e) => {
