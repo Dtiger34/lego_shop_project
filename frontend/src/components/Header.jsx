@@ -6,22 +6,64 @@ import './Header.css';
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [user, setUser] = useState(null);
-  const { getTotalItems } = useCart();
+  const { getTotalItems, loadUserCart } = useCart();
   const totalItems = getTotalItems();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // Check if user is logged in
+  // Function to load user from localStorage
+  const loadUser = () => {
     const userData = localStorage.getItem('user');
     if (userData) {
-      setUser(JSON.parse(userData));
+      try {
+        setUser(JSON.parse(userData));
+      } catch (e) {
+        setUser(null);
+      }
+    } else {
+      setUser(null);
     }
+  };
+
+  useEffect(() => {
+    // Check if user is logged in on mount
+    loadUser();
+
+    // Listen for custom auth change events
+    const handleAuthChange = () => {
+      loadUser();
+    };
+
+    window.addEventListener('authChange', handleAuthChange);
+
+    return () => {
+      window.removeEventListener('authChange', handleAuthChange);
+    };
   }, []);
 
   const handleLogout = () => {
+    // Save current cart to guest before logout
+    const currentUser = JSON.parse(localStorage.getItem('user') || '{}');
+    if (currentUser.id) {
+      const userCart = localStorage.getItem(`lego-cart-${currentUser.id}`);
+      if (userCart) {
+        // Save user cart as guest cart
+        localStorage.setItem('lego-cart-guest', userCart);
+      }
+      // Remove user-specific cart
+      localStorage.removeItem(`lego-cart-${currentUser.id}`);
+    }
+    
+    // Remove user data and token
     localStorage.removeItem('user');
     localStorage.removeItem('token');
     setUser(null);
+    
+    // Load guest cart
+    loadUserCart();
+    
+    // Dispatch custom event to notify other components
+    window.dispatchEvent(new Event('authChange'));
+    
     navigate('/');
   };
 

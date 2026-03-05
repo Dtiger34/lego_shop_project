@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../../service/authAPI';
+import { useCart } from '../../../context/CartContext';
 import './auth.css';
 
 export default function Login() {
@@ -9,6 +10,7 @@ export default function Login() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { loadUserCart } = useCart();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,6 +20,12 @@ export default function Login() {
       const { user, token } = await login(email, password);
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
+      
+      // Load user's cart from localStorage
+      loadUserCart();
+      
+      // Dispatch custom event to update Header
+      window.dispatchEvent(new Event('authChange'));
       
       // Redirect based on role
       if (user.role === 'admin') {

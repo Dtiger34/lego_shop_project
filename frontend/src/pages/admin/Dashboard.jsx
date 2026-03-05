@@ -40,13 +40,13 @@ function Dashboard() {
       // Calculate stats
       const totalRevenue = ordersData.reduce((sum, order) => {
         if (order.status !== 'cancelled') {
-          return sum + order.totalAmount;
+          return sum + order.totalPrice;
         }
         return sum;
       }, 0);
 
       const pendingOrders = ordersData.filter(order => 
-        order.status === 'pending' || order.status === 'processing'
+        order.status === 'pending'
       ).length;
 
       const lowStockProducts = productsData.filter(product => 
@@ -279,12 +279,12 @@ function StatisticsPanel({ stats, orders, products, formatCurrency }) {
                   <div className="activity-value">
                     <span className={`status-badge ${order.status}`}>
                       {order.status === 'pending' && 'Chờ xử lý'}
-                      {order.status === 'processing' && 'Đang xử lý'}
-                      {order.status === 'shipped' && 'Đã gửi'}
-                      {order.status === 'delivered' && 'Đã giao'}
+                      {order.status === 'paid' && 'Đã thanh toán'}
+                      {order.status === 'shipping' && 'Đang giao hàng'}
+                      {order.status === 'completed' && 'Hoàn thành'}
                       {order.status === 'cancelled' && 'Đã hủy'}
                     </span>
-                    <strong className="activity-amount">{formatCurrency(order.totalAmount)}</strong>
+                    <strong className="activity-amount">{formatCurrency(order.totalPrice)}</strong>
                   </div>
                 </div>
               ))
@@ -383,14 +383,14 @@ function OrdersPanel({ orders, onStatusUpdate, formatCurrency, formatDate }) {
                     </div>
                   </td>
                   <td>
-                    <strong className="price-value">{formatCurrency(order.totalAmount)}</strong>
+                    <strong className="price-value">{formatCurrency(order.totalPrice)}</strong>
                   </td>
                   <td>
                     <span className={`status-badge ${order.status}`}>
                       {order.status === 'pending' && 'Chờ xử lý'}
-                      {order.status === 'processing' && 'Đang xử lý'}
-                      {order.status === 'shipped' && 'Đã gửi'}
-                      {order.status === 'delivered' && 'Đã giao'}
+                      {order.status === 'paid' && 'Đã thanh toán'}
+                      {order.status === 'shipping' && 'Đang giao hàng'}
+                      {order.status === 'completed' && 'Hoàn thành'}
                       {order.status === 'cancelled' && 'Đã hủy'}
                     </span>
                   </td>
@@ -403,9 +403,9 @@ function OrdersPanel({ orders, onStatusUpdate, formatCurrency, formatDate }) {
                         onChange={(e) => handleStatusChange(order._id, e.target.value)}
                       >
                         <option value="pending">Chờ xử lý</option>
-                        <option value="processing">Đang xử lý</option>
-                        <option value="shipped">Đã gửi</option>
-                        <option value="delivered">Đã giao</option>
+                        <option value="paid">Đã thanh toán</option>
+                        <option value="shipping">Đang giao hàng</option>
+                        <option value="completed">Hoàn thành</option>
                         <option value="cancelled">Đã hủy</option>
                       </select>
                       <button

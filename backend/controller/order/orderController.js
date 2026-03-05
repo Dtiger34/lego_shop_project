@@ -117,6 +117,18 @@ exports.getAllOrders = async (req, res) => {
 exports.updateOrderStatus = async (req, res) => {
   try {
     const { status } = req.body;
+    
+    // Validate status against enum
+    const validStatuses = ['pending', 'paid', 'shipping', 'completed', 'cancelled'];
+    if (!status) {
+      return res.status(400).json({ message: 'Status is required' });
+    }
+    if (!validStatuses.includes(status)) {
+      return res.status(400).json({ 
+        message: `Invalid status. Allowed values: ${validStatuses.join(', ')}` 
+      });
+    }
+    
     const order = await Order.findByIdAndUpdate(
       req.params.id,
       { status },

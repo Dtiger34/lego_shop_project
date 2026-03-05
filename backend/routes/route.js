@@ -8,6 +8,7 @@ const categoryController = require('../controller/category/categoryController')
 const userController = require('../controller/user/userController')
 const reviewController = require('../controller/review/reviewController')
 const orderController = require('../controller/order/orderController')
+const cartController = require('../controller/cart/cartController')
 
 // auth routes
 router.post('/auth/login', authController.login)
@@ -54,5 +55,12 @@ router.get('/reviews/:id', reviewController.getReviewById)
 router.post('/reviews', jwtConfig.requireAuth, reviewController.createReview)
 router.put('/reviews/:id', jwtConfig.requireAuth, reviewController.updateReview)
 router.delete('/reviews/:id', jwtConfig.requireAuth, reviewController.deleteReview)
+
+// cart routes (requires authentication)
+router.get('/cart', jwtConfig.requireAuth, cartController.getCart)
+router.post('/cart/add', jwtConfig.requireAuth, cartController.addToCart)
+router.post('/cart/remove', jwtConfig.requireAuth, cartController.removeFromCart)
+router.put('/cart/update', jwtConfig.requireAuth, cartController.updateCartItem)
+router.post('/cart/clear', jwtConfig.requireAuth, cartController.clearCart)
 
 module.exports = router

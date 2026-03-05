@@ -1,11 +1,21 @@
 import { createContext, useContext, useState, useEffect } from 'react';
+import { isAuthenticated, getCurrentUser } from '../service/authAPI';
 
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
   const [cart, setCart] = useState(() => {
-    const savedCart = localStorage.getItem('lego-cart');
-    return savedCart ? JSON.parse(savedCart) : [];
+    // Load cart from localStorage
+    if (isAuthenticated()) {
+      const user = getCurrentUser();
+      if (user && user.id) {
+        const savedCart = localStorage.getItem(`lego-cart-${user.id}`);
+        return savedCart ? JSON.parse(savedCart) : [];
+      }
+    }
+    // For guest users, load from guest cart
+    const guestCart = localStorage.getItem('lego-cart-guest');
+    return guestCart ? JSON.parse(guestCart) : [];
   });
 
   const [modal, setModal] = useState({
@@ -23,7 +33,18 @@ export function CartProvider({ children }) {
   });
 
   useEffect(() => {
-    localStorage.setItem('lego-cart', JSON.stringify(cart));
+    // Always save cart to localStorage
+    if (isAuthenticated()) {
+      const user = getCurrentUser();
+      if (user && user.id) {
+        localStorage.setItem(`lego-cart-${user.id}`, JSON.stringify(cart));
+        // Remove guest cart when user is authenticated
+        localStorage.removeItem('lego-cart-guest');
+      }
+    } else {
+      // Save to guest cart for non-authenticated users
+      localStorage.setItem('lego-cart-guest', JSON.stringify(cart));
+    }
   }, [cart]);
 
   const addToCart = (product, quantity = 1) => {
@@ -66,6 +87,53 @@ export function CartProvider({ children }) {
 
   const clearCart = () => {
     setCart([]);
+    // Remove cart from localStorage
+    if (isAuthenticated()) {
+      const user = getCurrentUser();
+      if (user && user.id) {
+        localStorage.removeItem(`lego-cart-${user.id}`);
+      }
+    } else {
+      localStorage.removeItem('lego-cart-guest');
+    }
+  };
+
+  // Load cart from localStorage for authenticated user (merge with guest cart if exists)
+  const loadUserCart = () => {
+    if (isAuthenticated()) {
+      const user = getCurrentUser();
+      if (user && user.id) {
+        // Get guest cart if exists
+        const guestCart = localStorage.getItem('lego-cart-guest');
+        const guestItems = guestCart ? JSON.parse(guestCart) : [];
+        
+        // Get user cart
+        const userCart = localStorage.getItem(`lego-cart-${user.id}`);
+        const userItems = userCart ? JSON.parse(userCart) : [];
+        
+        // Merge carts: combine items, update quantities if duplicates
+        const mergedCart = [...userItems];
+        guestItems.forEach(guestItem => {
+          const existingIndex = mergedCart.findIndex(item => item._id === guestItem._id);
+          if (existingIndex > -1) {
+            // Update quantity if item exists
+            mergedCart[existingIndex].quantity += guestItem.quantity;
+          } else {
+            // Add new item
+            mergedCart.push(guestItem);
+          }
+        });
+        
+        setCart(mergedCart);
+        
+        // Clean up guest cart after merging
+        localStorage.removeItem('lego-cart-guest');
+      }
+    } else {
+      // Load guest cart for non-authenticated users
+      const guestCart = localStorage.getItem('lego-cart-guest');
+      setCart(guestCart ? JSON.parse(guestCart) : []);
+    }
   };
 
   const getTotalItems = () => {
@@ -102,6 +170,7 @@ export function CartProvider({ children }) {
     removeFromCart,
     updateQuantity,
     clearCart,
+    loadUserCart,
     getTotalItems,
     getTotalPrice,
     toast,

@@ -1,0 +1,63 @@
+name: Deploy Legoshop to Azure
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  AZURE_WEBAPP_NAME: legoshop-app
+  NODE_VERSION: "20.x"
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      # =========================
+      # 1️⃣ Install root deps
+      # =========================
+      - name: Install root dependencies
+        run: npm install
+
+      # =========================
+      # 2️⃣ Build frontend
+      # =========================
+      - name: Install frontend deps
+        run: npm --prefix frontend install
+
+      - name: Build frontend
+        run: npm --prefix frontend run build
+
+      # =========================
+      # 3️⃣ Copy React build → backend/public
+      # =========================
+      - name: Copy build to backend
+        run: |
+          rm -rf backend/public
+          mkdir backend/public
+          cp -r frontend/build/* backend/public/
+
+      # =========================
+      # 4️⃣ Install backend deps
+      # =========================
+      - name: Install backend deps
+        run: npm --prefix backend install
+
+      # =========================
+      # 5️⃣ Deploy to Azure
+      # =========================
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: backend

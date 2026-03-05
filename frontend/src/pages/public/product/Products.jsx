@@ -85,9 +85,9 @@ export default function Products() {
     <div className="products-page">
       <section className="products-hero">
         <div className="hero-content">
-          <h1 className="hero-title">🧱 Lego Chính Hãng</h1>
+          <h1 className="hero-title">Sản phẩm của Việt Tích</h1>
           <p className="hero-subtitle">
-            Khám phá bộ sưu tập Lego đa dạng — City, Technic, Star Wars, Marvel và nhiều hơn nữa
+            Khám phá bộ sưu tập đa dạng, gắn liền với các địa danh lịch sử mang những câu chuyện độc đáo.
           </p>
         </div>
       </section>
