@@ -20,19 +20,20 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: "npm"
 
       # Backend
       - name: Install backend
         run: |
           cd backend
-          npm install --production
+          npm ci --omit=dev
 
       # Frontend
       - name: Build frontend
+        env:
+          NODE_ENV: production
         run: |
           cd frontend
-          npm install
+          npm ci
           npm run build
 
       # Create deploy folder
@@ -67,6 +68,13 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_FDE98D2DFC204DEAA60A48422693E557 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_74A66BFCFC124175B46BB9B8C59A48CE }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_705CA6ACF8454080B34C5FC342851399 }}
+
+      - name: Configure Azure Web App Settings
+        run: |
+          az webapp config appsettings set --name legoshop --resource-group legoshop-rg \
+            --settings NODE_ENV=production \
+            PORT=8080 \
+            WEBSITE_NODE_DEFAULT_VERSION=22
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
