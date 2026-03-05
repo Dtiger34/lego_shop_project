@@ -17,69 +17,50 @@ jobs:
         with:
           node-version: 22
 
-      # Install backend dependencies
       - name: Install backend dependencies
         run: |
           cd backend
           npm ci --omit=dev
 
-      # Install frontend dependencies and build
-      - name: Install frontend dependencies and build
+      - name: Build frontend
         run: |
           cd frontend
           npm ci
           npm run build
 
-      # Prepare deployment structure
-      - name: Prepare deployment structure
+      - name: Prepare deploy folder
         run: |
-          # Copy backend files
-          mkdir -p deploy
+          mkdir deploy
           cp -r backend/* deploy/
-
-          # Copy frontend build to public folder
           mkdir -p deploy/public
           cp -r frontend/dist/* deploy/public/
 
-          # Copy root package files if needed
-          cp package*.json deploy/ 2>/dev/null || :
-
-      # Upload artifact without zipping
-      - name: Upload artifact for deployment job
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: deploy/
+          path: deploy
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    environment:
-      name: "Production"
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
-    permissions:
-      id-token: write
-      contents: read
 
     steps:
-      - name: Download artifact from build job
+      - name: Download artifact
         uses: actions/download-artifact@v4
         with:
           name: node-app
-          path: .
+          path: deploy
 
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_FDE98D2DFC204DEAA60A48422693E557 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_74A66BFCFC124175B46BB9B8C59A48CE }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_705CA6ACF8454080B34C5FC342851399 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID }}
 
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
+      - name: Deploy to Azure
         uses: azure/webapps-deploy@v3
         with:
-          app-name: "legoshop"
-          slot-name: "Production"
-          package: .
+          app-name: legoshop
+          package: deploy
