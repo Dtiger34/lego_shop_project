@@ -6,7 +6,7 @@ const path = require("path");
 
 const connectionDB = require("./config/db");
 
-const app = express();
+const app = require("./app");
 
 app.use(bodyParser.json());
 app.use(morgan("dev"));
