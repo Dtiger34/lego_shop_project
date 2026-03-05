@@ -1,24 +1,15 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const morgan = require("morgan");
-const cors = require("cors");
+const app = require("./app");
 const path = require("path");
-
+const express = require("express");
 const connectionDB = require("./config/db");
 
-const app = require("./app");
-
-app.use(bodyParser.json());
-app.use(morgan("dev"));
-app.use(cors());
-
-app.use("/uploads", express.static("uploads"));
-
-// serve React build
 app.use(express.static(path.join(__dirname, "public")));
 
-// fallback React router
-app.use((req, res) => {
+app.get(/.*/, (req, res) => {
+  if (req.originalUrl.startsWith("/api")) {
+    return res.status(404).json({ message: "API route not found" });
+  }
+
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
