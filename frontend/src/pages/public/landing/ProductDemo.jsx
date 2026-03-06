@@ -6,7 +6,7 @@ export default function ProductDemo() {
   const products = [
     {
       id: 1,
-      name: 'Lego City Police Station',
+      name: 'Đồ chơi xếp hình City Police Station',
       description: 'Bộ đồn cảnh sát thành phố với 668 mảnh ghép, phù hợp bé 7+',
       icon: '🚔',
       price: 1250000,
@@ -14,7 +14,7 @@ export default function ProductDemo() {
     },
     {
       id: 2,
-      name: 'Lego Technic Racing Car',
+      name: 'Đồ chơi xếp hình Technic Racing Car',
       description: 'Xe đua kỹ thuật cao với động cơ mô phỏng thực tế, 245 mảnh',
       icon: '🏎️',
       price: 980000,
@@ -22,7 +22,7 @@ export default function ProductDemo() {
     },
     {
       id: 3,
-      name: 'Lego Star Wars Millennium Falcon',
+      name: 'Đồ chơi xếp hình Star Wars Millennium Falcon',
       description: 'Phi thuyền huyền thoại Star Wars, bộ sưu tập cho fan',
       icon: '🚀',
       price: 3200000,
@@ -30,7 +30,7 @@ export default function ProductDemo() {
     },
     {
       id: 4,
-      name: 'Lego Creator 3-in-1 House',
+      name: 'Đồ chơi xếp hình Creator 3-in-1 House',
       description: 'Ngôi nhà sáng tạo 3 trong 1, lắp được 3 mô hình khác nhau',
       icon: '🏠',
       price: 1420000,
@@ -38,7 +38,7 @@ export default function ProductDemo() {
     },
     {
       id: 5,
-      name: 'Lego Ninjago Dragon',
+      name: 'Đồ chơi xếp hình Ninjago Dragon',
       description: 'Rồng Ninjago hùng dũng với khớp cử động linh hoạt, 360 mảnh',
       icon: '🐉',
       price: 1380000,
@@ -46,7 +46,7 @@ export default function ProductDemo() {
     },
     {
       id: 6,
-      name: 'Lego Marvel Avengers HQ',
+      name: 'Đồ chơi xếp hình Marvel Avengers HQ',
       description: 'Trụ sở biệt đội Avengers với các siêu anh hùng, 699 mảnh',
       icon: '🦸',
       price: 2650000,
@@ -69,7 +69,7 @@ export default function ProductDemo() {
           <span className="section-badge">BỘ SƯU TẬP ĐẶC BIỆT</span>
           <h2 className="section-title">Sản phẩm được chọn lọc tỉ mỉ</h2>
           <p className="section-title">
-            Như người thợ xưa chọn nguyên liệu, mỗi bộ Lego đều được tuyển chọn kỹ lưỡng để đảm bảo chất lượng tốt nhất
+            Như người thợ xưa chọn nguyên liệu, mỗi bộ đồ chơi xếp hình đều được tuyển chọn kỹ lưỡng để đảm bảo chất lượng tốt nhất
           </p>
         </div>
 

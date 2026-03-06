@@ -304,3 +304,53 @@
   background: rgba(212, 168, 67, 0.2);
   color: #d4a843;
 }
+/* ========== RESPONSIVE DESIGN ========== */
+
+/* Mobile (< 640px) */
+@media (max-width: 639px) {
+  .header-inner {
+    padding: 0.875rem 1rem;
+  }
+
+  .brand-name {
+    font-size: 1.125rem;
+  }
+
+  .brand-logo {
+    height: 32px;
+  }
+
+  .menu-toggle {
+    padding: 0.375rem;
+  }
+
+  .nav-mobile {
+    padding: 1rem 1.25rem;
+  }
+
+  .mobile-actions {
+    gap: 0.625rem;
+  }
+
+  .btn-login-mobile,
+  .btn-cart-mobile,
+  .btn-logout-mobile {
+    padding: 0.625rem 0.875rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Tablet (640px - 1024px) */
+@media (min-width: 640px) and (max-width: 1024px) {
+  .header-inner {
+    padding: 1rem 1.5rem;
+  }
+
+  .nav-desktop {
+    gap: 1.5rem;
+  }
+
+  .nav-desktop a {
+    font-size: 0.95rem;
+  }
+}

@@ -73,7 +73,7 @@ export default function ContactForm() {
               onChange={handleChange}
               required
               rows="5"
-              placeholder="Tôi muốn hỏi về bộ Lego..."
+              placeholder="Tôi muốn hỏi về bộ đồ chơi xếp hình..."
             />
           </div>
           <button type="submit" className="btn btn-primary btn-submit">

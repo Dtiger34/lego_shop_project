@@ -573,6 +573,7 @@
 
   .admin-main {
     margin-left: 0;
+    padding: 1rem;
   }
 
   .sidebar-nav {
@@ -603,5 +604,53 @@
   .btn-update {
     width: 100%;
   }
+
+  .section-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .activities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .products-grid,
+  .orders-grid,
+  .users-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar-header {
+    padding: 1.5rem 1rem;
+  }
+
+  .sidebar-footer {
+    padding: 1rem;
+  }
 }
 
+/* Tablet Responsive */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .admin-sidebar {
+    width: 220px;
+  }
+
+  .admin-main {
+    margin-left: 220px;
+    padding: 1.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .products-grid,
+  .orders-grid,
+  .users-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

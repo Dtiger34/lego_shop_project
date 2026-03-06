@@ -1,0 +1,117 @@
+/* 3D Viewer Page Styles */
+.viewer-page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  padding-top: 80px;
+}
+
+.viewer-header {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: #ffffff;
+}
+
+.viewer-header h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.viewer-header p {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.viewer-container {
+  flex: 1;
+  width: 100%;
+  min-height: 500px;
+  position: relative;
+}
+
+.viewer-container canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.viewer-info {
+  padding: 2rem;
+  background: #f8f9fa;
+  border-top: 1px solid #e0e0e0;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.viewer-info h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  color: #2c3e50;
+}
+
+.viewer-info ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.viewer-info li {
+  padding: 0.75rem;
+  background: #ffffff;
+  border-left: 3px solid #d4a843;
+  border-radius: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .viewer-page {
+    padding-top: 60px;
+  }
+
+  .viewer-header {
+    padding: 1.5rem;
+  }
+
+  .viewer-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .viewer-header p {
+    font-size: 0.9rem;
+  }
+
+  .viewer-container {
+    min-height: 400px;
+  }
+
+  .viewer-info {
+    padding: 1.5rem;
+  }
+
+  .viewer-info ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .viewer-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .viewer-container {
+    min-height: 300px;
+  }
+
+  .viewer-info h3 {
+    font-size: 1rem;
+  }
+}

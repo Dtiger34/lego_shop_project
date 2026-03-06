@@ -1,68 +1,71 @@
 export default function Features() {
-  const features = [
-    {
-      icon: '🧱',
-      title: 'Chất lượng như nghề thủ công',
-      description: 'Như người thợ xưa tỉ mỉ từng chi tiết, mỗi mảnh Lego đều được kiểm định chặt chẽ, nguyên vẹn và chính hãng.',
-      color: 'lego-red',
-    },
-    {
-      icon: '🎨',
-      title: 'Đa dạng như bức tranh lịch sử',
-      description: 'Từ kiến trúc đến khoa học, từ thiên nhiên đến vũ trụ — hàng trăm chủ đề để khám phá và sáng tạo.',
-      color: 'lego-yellow',
-    },
-    {
-      icon: '🧩',
-      title: 'Nuôi dưỡng tư duy kiên trì',
-      description: 'Như tổ tiên dạy: "Có công mài sắt có ngày nên kim". Lego rèn luyện sự kiên nhẫn, tư duy logic và khéo léo từ nhỏ.',
-      color: 'lego-navy',
-    },
-    {
-      icon: '🏆',
-      title: 'Bền bỉ qua thời gian',
-      description: 'Sản phẩm được chế tác với độ chính xác cao, truyền từ thế hệ này sang thế hệ khác.',
-      color: 'lego-orange',
-    },
-    {
-      icon: '🚚',
-      title: 'Tận tâm trong từng gói hàng',
-      description: 'Đóng gói chu đáo, vận chuyển cẩn thận đến tay khách hàng khắp mọi miền đất nước.',
-      color: 'lego-pink',
-    },
-    {
-      icon: '🎁',
-      title: 'Món quà tri thức',
-      description: 'Hơn cả vật chất, Lego là món quà giáo dục ý nghĩa — truyền cảm hứng và kiến thức cho thế hệ trẻ.',
-      color: 'lego-blue',
-    },
-  ];
-
   return (
-    <section className="features" id="features">
-      <div className="features-header">
-        <span className="section-badge">TRUYỀN THỐNG & HIỆN ĐẠI</span>
-        <h2 className="section-title">Giá trị chúng tôi gìn giữ</h2>
-        <p className="section-subtitle">
-          Kế thừa tinh thần nghề nhân và sự tỉ mỉ của cha ông, chúng tôi mang đến đồ chơi chất lượng giúp trẻ thơ phát triển tư duy và kỹ năng
-        </p>
-      </div>
+    <section className="story-section" id="features">
+      <div className="story-container">
+        <div className="story-header">
+          <span className="section-badge">Ý TƯỞNG SẢN PHẨM</span>
+          <h2 className="section-title">
+            Đồ Chơi Xếp Hình - Kết Nối Với Lịch Sử
+          </h2>
+        </div>
 
-      <div className="features-grid">
-        {features.map((feature, index) => (
-          <div key={index} className={`feature-card feature-${feature.color}`}>
-            <div className="feature-icon">{feature.icon}</div>
-            <h3 className="feature-title">{feature.title}</h3>
-            <p className="feature-description">{feature.description}</p>
+        <div className="story-content">
+          <div className="story-text">
+            <p className="story-paragraph">
+              Việt Tích sinh ra từ một ý tưởng đơn giản nhưng đầy ý nghĩa: tạo
+              ra những bộ đồ chơi xếp hình tái hiện các địa danh lịch sử Việt
+              Nam, giúp trẻ em vừa vui chơi vừa học hỏi về di sản văn hóa dân
+              tộc. Thay vì chỉ nhìn qua sách vở hay ảnh chụp, các em có thể tự
+              tay xây dựng lại những công trình mà tổ tiên đã dày công kiến tạo
+              qua nhiều thế kỷ.
+            </p>
+            <p className="story-paragraph">
+              Mỗi bộ đồ chơi xếp hình được thiết kế dựa trên nghiên cứu kỹ lưỡng
+              về kiến trúc, lịch sử và văn hóa của từng địa danh. Từ những ngôi
+              chùa cổ kính đến các khuôn viên văn hóa linh thiêng, từ các công
+              trình kiến trúc độc đáo đến những di sản thế giới - mỗi mô hình
+              đều mang trong mình một câu chuyện riêng. Qua quá trình lắp ráp
+              từng chi tiết, trẻ em không chỉ rèn luyện tay nghề và tư duy, mà
+              còn hiểu sâu hơn về giá trị lịch sử và ý nghĩa văn hóa của từng
+              công trình.
+            </p>
+            <p className="story-paragraph">
+              Chúng tôi tin rằng, khi trẻ em được "xây dựng" lại chính bàn tay
+              mình những di sản mà ông cha đã để lại, các em sẽ trân trọng và tự
+              hào hơn về quê hương đất nước. Đó chính là sứ mệnh của Việt Tích -
+              biến mỗi giờ phút vui chơi thành bài học về lịch sử, mỗi mảnh ghép
+              thành cầu nối giữa quá khứ và tương lai.
+            </p>
           </div>
-        ))}
-      </div>
 
-      <div className="features-cta">
-        <p className="cta-text">Sẵn sàng bắt đầu hành trình sáng tạo Lego của bạn?</p>
-        <a href="#products" className="btn-primary">
-          Khám phá bộ sưu tập ngay
-        </a>
+          <div className="story-images">
+            <div className="story-image-frame">
+              <img
+                src="/chuamotcot.jpg"
+                alt="Chùa Một Cột - Di sản văn hóa Việt Nam"
+                className="story-img"
+              />
+              <p className="story-image-caption">Chùa Một Cột</p>
+            </div>
+            <div className="story-image-frame">
+              <img
+                src="/cotcohanoi.jpg"
+                alt="Cột cờ Hà Nội - Biểu tượng của thủ đô"
+                className="story-img"
+              />
+              <p className="story-image-caption">Cột cờ Hà Nội</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="story-cta">
+          <p className="cta-text">
+            Khám phá thế giới đồ chơi xếp hình địa danh lịch sử Việt Nam
+          </p>
+          <a href="#products" className="btn-primary">
+            Xem bộ sưu tập
+          </a>
+        </div>
       </div>
     </section>
   );

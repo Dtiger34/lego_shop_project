@@ -41,12 +41,12 @@ const seedDB = async () => {
   try {
     // ===== CATEGORIES =====
     const categories = await Category.insertMany([
-      { name: 'Lego City', slug: 'lego-city' },
-      { name: 'Lego Technic', slug: 'lego-technic' },
-      { name: 'Lego Star Wars', slug: 'lego-star-wars' },
-      { name: 'Lego Creator', slug: 'lego-creator' },
-      { name: 'Lego Marvel', slug: 'lego-marvel' },
-      { name: 'Lego Ninjago', slug: 'lego-ninjago' }
+      { name: 'Đồ chơi xếp hình City', slug: 'lego-city' },
+      { name: 'Đồ chơi xếp hình Technic', slug: 'lego-technic' },
+      { name: 'Đồ chơi xếp hình Star Wars', slug: 'lego-star-wars' },
+      { name: 'Đồ chơi xếp hình Creator', slug: 'lego-creator' },
+      { name: 'Đồ chơi xếp hình Marvel', slug: 'lego-marvel' },
+      { name: 'Đồ chơi xếp hình Ninjago', slug: 'lego-ninjago' }
     ])
     console.log('✓ Danh mục đã được thêm:', categories.length)
 
@@ -86,9 +86,9 @@ const seedDB = async () => {
 
     // ===== PRODUCTS =====
     const products = await Product.insertMany([
-      // Lego City
+      // Đồ chơi xếp hình City
       {
-        name: 'Lego City Police Station 60316',
+        name: 'Đồ chơi xếp hình City Police Station 60316',
         price: 1250000,
         description: 'Đồn cảnh sát thành phố với 668 mảnh ghép. Bao gồm xe cảnh sát, xe mô tô và 5 nhân vật. Phù hợp cho bé từ 7 tuổi trở lên.',
         images: ['/uploads/lego-city-police.jpg'],
@@ -99,7 +99,7 @@ const seedDB = async () => {
         numReviews: 18
       },
       {
-        name: 'Lego City Fire Station 60320',
+        name: 'Đồ chơi xếp hình City Fire Station 60320',
         price: 980000,
         description: 'Trạm cứu hỏa thành phố với 540 mảnh. Xe cứu hỏa, xe thang và 4 lính cứu hỏa. Phù hợp cho bé từ 6 tuổi.',
         images: ['/uploads/lego-city-fire.jpg'],
@@ -110,7 +110,7 @@ const seedDB = async () => {
         numReviews: 14
       },
       {
-        name: 'Lego City Airport 60261',
+        name: 'Đồ chơi xếp hình City Airport 60261',
         price: 1850000,
         description: 'Sân bay thành phố với 286 mảnh. Máy bay, xe phục vụ sân bay và 6 nhân vật. Phù hợp từ 6 tuổi.',
         images: ['/uploads/lego-city-airport.jpg'],
@@ -120,9 +120,9 @@ const seedDB = async () => {
         rating: 4.5,
         numReviews: 10
       },
-      // Lego Technic
+      // Đồ chơi xếp hình Technic
       {
-        name: 'Lego Technic Ferrari Daytona SP3 42143',
+        name: 'Đồ chơi xếp hình Technic Ferrari Daytona SP3 42143',
         price: 8500000,
         description: 'Siêu xe Ferrari Daytona SP3 tỉ lệ 1:8 với 3778 mảnh ghép. Chi tiết kỹ thuật cực kỳ tinh xảo với động cơ V12 mô phỏng thực tế.',
         images: ['/uploads/lego-technic-ferrari.jpg'],
@@ -133,7 +133,7 @@ const seedDB = async () => {
         numReviews: 9
       },
       {
-        name: 'Lego Technic Land Rover Defender 42110',
+        name: 'Đồ chơi xếp hình Technic Land Rover Defender 42110',
         price: 4200000,
         description: 'Land Rover Defender tỉ lệ 1:8 với 2573 mảnh. Hộp số thực tế, cầu xe hoạt động và hệ thống lái chính xác.',
         images: ['/uploads/lego-technic-landrover.jpg'],
@@ -143,9 +143,9 @@ const seedDB = async () => {
         rating: 4.9,
         numReviews: 15
       },
-      // Lego Star Wars
+      // Đồ chơi xếp hình Star Wars
       {
-        name: 'Lego Star Wars Millennium Falcon 75257',
+        name: 'Đồ chơi xếp hình Star Wars Millennium Falcon 75257',
         price: 3200000,
         description: 'Phi thuyền Millennium Falcon huyền thoại với 1353 mảnh. Bao gồm Han Solo, Chewbacca, Rey và các nhân vật nổi tiếng.',
         images: ['/uploads/lego-sw-falcon.jpg'],
@@ -156,9 +156,9 @@ const seedDB = async () => {
         numReviews: 22
       },
       {
-        name: 'Lego Star Wars AT-AT 75313',
+        name: 'Đồ chơi xếp hình Star Wars AT-AT 75313',
         price: 7800000,
-        description: 'Máy bộ binh AT-AT khổng lồ với 6785 mảnh — một trong những bộ Lego lớn nhất từ trước đến nay.',
+        description: 'Máy bộ binh AT-AT khổng lồ với 6785 mảnh — một trong những bộ đồ chơi xếp hình lớn nhất từ trước đến nay.',
         images: ['/uploads/lego-sw-atat.jpg'],
         category: categories[2]._id,
         stock: 5,
@@ -166,11 +166,11 @@ const seedDB = async () => {
         rating: 5.0,
         numReviews: 6
       },
-      // Lego Creator
+      // Đồ chơi xếp hình Creator
       {
-        name: 'Lego Creator Expert Eiffel Tower 10307',
+        name: 'Đồ chơi xếp hình Creator Expert Eiffel Tower 10307',
         price: 5500000,
-        description: 'Tháp Eiffel cao 1.5 mét với 10001 mảnh ghép. Bộ Lego Creator Expert danh tiếng, dành cho người sưu tầm.',
+        description: 'Tháp Eiffel cao 1.5 mét với 10001 mảnh ghép. Bộ đồ chơi xếp hình Creator Expert danh tiếng, dành cho người sưu tầm.',
         images: ['/uploads/lego-creator-eiffel.jpg'],
         category: categories[3]._id,
         stock: 7,
@@ -179,7 +179,7 @@ const seedDB = async () => {
         numReviews: 11
       },
       {
-        name: 'Lego Creator 3-in-1 Dragon 31112',
+        name: 'Đồ chơi xếp hình Creator 3-in-1 Dragon 31112',
         price: 750000,
         description: 'Rồng sáng tạo 3-trong-1: lắp được mô hình rồng, cá, hay đại bàng. 234 mảnh, phù hợp từ 6 tuổi.',
         images: ['/uploads/lego-creator-dragon.jpg'],
@@ -189,9 +189,9 @@ const seedDB = async () => {
         rating: 4.6,
         numReviews: 24
       },
-      // Lego Marvel
+      // Đồ chơi xếp hình Marvel
       {
-        name: 'Lego Marvel Avengers Tower 76166',
+        name: 'Đồ chơi xếp hình Marvel Avengers Tower 76166',
         price: 2650000,
         description: 'Trụ sở Avengers với 509 mảnh. Bao gồm Iron Man, Thor, Hulk, Black Widow và nhiều siêu anh hùng yêu thích.',
         images: ['/uploads/lego-marvel-avengers.jpg'],
@@ -201,9 +201,9 @@ const seedDB = async () => {
         rating: 4.7,
         numReviews: 19
       },
-      // Lego Ninjago
+      // Đồ chơi xếp hình Ninjago
       {
-        name: 'Lego Ninjago City Markets 71799',
+        name: 'Đồ chơi xếp hình Ninjago City Markets 71799',
         price: 3900000,
         description: 'Khu chợ thành phố Ninjago 3 tầng rực rỡ với 6163 mảnh. Bao gồm 18 nhân vật và hàng chục chi tiết thú vị.',
         images: ['/uploads/lego-ninjago-city.jpg'],
@@ -214,7 +214,7 @@ const seedDB = async () => {
         numReviews: 13
       },
       {
-        name: 'Lego Ninjago Ninja Dojo Temple 71767',
+        name: 'Đồ chơi xếp hình Ninjago Ninja Dojo Temple 71767',
         price: 1450000,
         description: 'Đền dojo ninja với 1394 mảnh. Bao gồm 6 nhân vật ninja và nhiều vũ khí bí ẩn.',
         images: ['/uploads/lego-ninjago-dojo.jpg'],

@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="hero">
+    <section className="hero" id="hero">
       {/* Decorative background elements */}
       <div className="hero-bg-bubble hero-bg-bubble-1"></div>
       <div className="hero-bg-bubble hero-bg-bubble-2"></div>
@@ -11,16 +11,18 @@ export default function Hero() {
           {/* Left content */}
           <div className="hero-content animate-fade-in">
             <div className="hero-text">
-              <span className="hero-badge">
-                🧱 Tinh thần xây dựng & Tâm huyết truyền thống
-              </span>
               <h1 className="hero-title">
-                <span className="hero-gradient">Nối dài di sản,
+                <span className="hero-gradient">
+                  Nối dài di sản,
                   <br />
-                Xây dựng tương lai</span>
+                  Xây dựng tương lai
+                </span>
               </h1>
               <p className="hero-description">
-                Kế thừa tinh thần kiên trì của tổ tiên - từng viên gạch xây nên đền đài trường tồn, chúng tôi mang đến những bộ Lego chính hãng để thế hệ trẻ học hỏi về sự sáng tạo, kiên nhẫn và khéo léo của cha ông.
+                Việt Tích mang đến bộ sưu tập đồ chơi xếp hình chính hãng, kết
+                nối niềm đam mê xây dựng với những công trình lịch sử biểu tượng
+                của Việt Nam, mỗi bộ đồ chơi là một hành trình khám phá, giáo
+                dục và sáng tạo dành cho thế hệ trẻ.
               </p>
             </div>
 
@@ -33,22 +35,6 @@ export default function Hero() {
                 Tìm hiểu thêm
               </a>
             </div>
-
-            {/* Stats */}
-            <div className="hero-stats">
-              <div className="stat">
-                <p className="stat-number">1000+</p>
-                <p className="stat-label">Gia đình tin tưởng</p>
-              </div>
-              <div className="stat">
-                <p className="stat-number">100%</p>
-                <p className="stat-label">Chính hãng, nguồn gốc rõ ràng</p>
-              </div>
-              <div className="stat">
-                <p className="stat-number">200+</p>
-                <p className="stat-label">Mô hình đa dạng</p>
-              </div>
-            </div>
           </div>
 
           {/* Right image */}
@@ -56,9 +42,13 @@ export default function Hero() {
             <div className="hero-image-glow"></div>
             <div className="hero-image">
               <div className="image-placeholder">
-                <img src="/logo_viettich.jpg" alt="Việt Tích Logo" className="hero-logo" />
+                <img
+                  src="/logo_viettich.jpg"
+                  alt="Việt Tích Logo"
+                  className="hero-logo"
+                />
                 <p className="image-title">Việt Tích</p>
-                <p className="image-subtitle">Từng viên gạch - Một tương lai</p>
+                <p className="image-subtitle">Không chỉ là đồ chơi</p>
               </div>
             </div>
           </div>
