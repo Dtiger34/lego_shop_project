@@ -33,11 +33,11 @@ const ThapBut3DView = () => {
 
       // Renderer setup
       const renderer = new THREE.WebGLRenderer({
-        antialias: true,
+        antialias: false,
         alpha: true,
       });
       renderer.setSize(container.clientWidth, container.clientHeight);
-      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
       renderer.shadowMap.enabled = true;
       container.appendChild(renderer.domElement);
       rendererRef.current = renderer;
@@ -49,8 +49,8 @@ const ThapBut3DView = () => {
       const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
       directionalLight.position.set(5, 5, 5);
       directionalLight.castShadow = true;
-      directionalLight.shadow.mapSize.width = 2048;
-      directionalLight.shadow.mapSize.height = 2048;
+      directionalLight.shadow.mapSize.width = 1024;
+      directionalLight.shadow.mapSize.height = 1024;
       scene.add(directionalLight);
 
       // Load 3D model
@@ -70,11 +70,11 @@ const ThapBut3DView = () => {
           const scale = 1.5 / maxDim;
           model.scale.multiplyScalar(scale);
 
-          // Enable shadows on model
+          // Optimize model rendering
           model.traverse((child) => {
             if (child.isMesh) {
-              child.castShadow = true;
-              child.receiveShadow = true;
+              child.castShadow = false;
+              child.receiveShadow = false;
             }
           });
 
