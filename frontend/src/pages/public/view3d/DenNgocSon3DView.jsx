@@ -56,7 +56,7 @@ const DenNgocSon3DView = () => {
       // Load 3D model
       const loader = createOptimizedLoader();
       loader.load(
-        "/cong_den_ngoc_son.glb",
+        "/cong_den_ngoc_son-compressed.glb",
         (gltf) => {
           const model = gltf.scene;
 

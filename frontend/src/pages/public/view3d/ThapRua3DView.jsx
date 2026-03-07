@@ -56,7 +56,7 @@ const ThapRua3DView = () => {
       // Load 3D model
       const loader = createOptimizedLoader();
       loader.load(
-        "/thap_rua.glb",
+        "/thap_rua-compressed.glb",
         (gltf) => {
           const model = gltf.scene;
 

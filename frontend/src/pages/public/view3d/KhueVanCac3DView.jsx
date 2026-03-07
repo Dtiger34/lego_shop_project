@@ -9,7 +9,7 @@ const KhueVanCac3DView = () => {
   const cameraRef = useRef(null);
   const rendererRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error] = useState(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -56,7 +56,7 @@ const KhueVanCac3DView = () => {
       // Load 3D model
       const loader = createOptimizedLoader();
       loader.load(
-        "/khue_van_cac.glb",
+        "/khue_van_cac-compressed.glb",
         (gltf) => {
           const model = gltf.scene;
 
@@ -144,13 +144,13 @@ const KhueVanCac3DView = () => {
         },
         (progress) => {
           // Loading progress
-          console.log(
-            `Loading... ${((progress.loaded / progress.total) * 100).toFixed(2)}%`,
+          const percentComplete = Math.round(
+            (progress.loaded / progress.total) * 100,
           );
+          console.log(`Loading... ${percentComplete}%`);
         },
-        (err) => {
-          console.error("Error loading model:", err);
-          setError("Không thể tải mô hình 3D. Vui lòng thử lại.");
+        (error) => {
+          console.error("Error loading model:", error);
           setIsLoading(false);
         },
       );
