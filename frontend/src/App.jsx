@@ -1,4 +1,19 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
+import { useEffect } from "react";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [pathname]);
+  return null;
+}
 import { CartProvider, useCart } from "./context/CartContext";
 import Layout from "./components/Layout";
 import Toast from "./components/Toast";
@@ -84,6 +99,7 @@ function AppContent() {
   return (
     <>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           {/* Admin Routes - No Layout */}
           <Route

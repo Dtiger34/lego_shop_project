@@ -53,6 +53,11 @@ export default function Header() {
 
   const isAdmin = user?.role === "admin";
 
+  const handleNavClick = () => {
+    setIsMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <header className="site-header">
       <nav className="header-inner">
@@ -109,17 +114,17 @@ export default function Header() {
       {/* Mobile menu */}
       {isMenuOpen && (
         <div className="nav-mobile">
-          <a href="/#features" onClick={() => setIsMenuOpen(false)}>
+          <a href="/#features" onClick={handleNavClick}>
             Giới thiệu
           </a>
-          <Link to="/products" onClick={() => setIsMenuOpen(false)}>
+          <Link to="/products" onClick={handleNavClick}>
             Sản phẩm
           </Link>
-          <a href="/#contact" onClick={() => setIsMenuOpen(false)}>
+          <a href="/#contact" onClick={handleNavClick}>
             Liên hệ
           </a>
           {isAdmin && (
-            <Link to="/admin/dashboard" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/admin/dashboard" onClick={handleNavClick}>
               Quản trị
             </Link>
           )}
@@ -136,7 +141,11 @@ export default function Header() {
                 Đăng nhập
               </a>
             )}
-            <Link to="/cart" className="btn-cart-mobile">
+            <Link
+              to="/cart"
+              className="btn-cart-mobile"
+              onClick={handleNavClick}
+            >
               🛒 Giỏ hàng
               {totalItems > 0 && (
                 <span className="cart-badge">{totalItems}</span>
