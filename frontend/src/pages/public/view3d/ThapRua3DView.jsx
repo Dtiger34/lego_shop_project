@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { createOptimizedLoader } from "../../../utils/loaderOptimizer.js";
 import "./view3d.css";
 
 const ThapRua3DView = () => {
@@ -54,7 +54,7 @@ const ThapRua3DView = () => {
       scene.add(directionalLight);
 
       // Load 3D model
-      const loader = new GLTFLoader();
+      const loader = createOptimizedLoader();
       loader.load(
         "/thap_rua.glb",
         (gltf) => {
