@@ -58,7 +58,7 @@ const LangBac3DView = () => {
       // Load 3D model
       const loader = new GLTFLoader();
       loader.load(
-        "/langbac.glb",
+        "/langbac-compressed.glb",
         (gltf) => {
           const model = gltf.scene;
 

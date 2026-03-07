@@ -58,7 +58,7 @@ const CotCoHaNoi3DView = () => {
       // Load 3D model
       const loader = new GLTFLoader();
       loader.load(
-        "/cot_co_ha_noi.glb",
+        "/cot_co_ha_noi-compressed.glb",
         (gltf) => {
           const model = gltf.scene;
 

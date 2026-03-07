@@ -58,7 +58,7 @@ const ChuaMotCot3DView = () => {
       // Load 3D model
       const loader = new GLTFLoader();
       loader.load(
-        "/chua_mot_cot_3d.glb",
+        "/chua_mot_cot_3d-compressed.glb",
         (gltf) => {
           const model = gltf.scene;
 

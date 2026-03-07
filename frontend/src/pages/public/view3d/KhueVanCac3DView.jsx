@@ -61,7 +61,7 @@ const KhueVanCac3DView = () => {
       const loader = createOptimizedLoader();
       loadGLTFModel(
         loader,
-        "/khue_van_cac.glb",
+        "/khue_van_cac-compressed.glb",
         (gltf) => {
           const model = gltf.scene;
 

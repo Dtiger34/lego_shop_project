@@ -56,7 +56,7 @@ const NgoMonHue3DView = () => {
       // Load 3D model
       const loader = new GLTFLoader();
       loader.load(
-        "/ngo_mon_hue.glb",
+        "/ngo_mon_hue-compressed.glb",
         (gltf) => {
           const model = gltf.scene;
 

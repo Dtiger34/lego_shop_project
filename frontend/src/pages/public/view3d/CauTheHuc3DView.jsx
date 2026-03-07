@@ -56,7 +56,7 @@ const CauTheHuc3DView = () => {
       // Load 3D model
       const loader = new GLTFLoader();
       loader.load(
-        "/cau_the_huc.glb",
+        "/cau_the_huc-compressed.glb",
         (gltf) => {
           const model = gltf.scene;
 

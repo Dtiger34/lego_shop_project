@@ -56,7 +56,7 @@ const ThapBut3DView = () => {
       // Load 3D model
       const loader = new GLTFLoader();
       loader.load(
-        "/thap_but.glb",
+        "/thap_but-compressed.glb",
         (gltf) => {
           const model = gltf.scene;
 

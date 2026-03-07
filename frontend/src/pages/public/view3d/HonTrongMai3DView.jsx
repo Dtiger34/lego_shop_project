@@ -56,7 +56,7 @@ const HonTrongMai3DView = () => {
       // Load 3D model
       const loader = new GLTFLoader();
       loader.load(
-        "/hon_trong_mai.glb",
+        "/hon_trong_mai-compressed.glb",
         (gltf) => {
           const model = gltf.scene;
 
