@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import {
+  createOptimizedLoader,
+  loadGLTFModel,
+  optimizeScene,
+} from "../../../utils/loaderOptimizer";
 import "./view3d.css";
 
 const KhueVanCac3DView = () => {
@@ -9,7 +13,7 @@ const KhueVanCac3DView = () => {
   const cameraRef = useRef(null);
   const rendererRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error] = useState(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -53,9 +57,10 @@ const KhueVanCac3DView = () => {
       directionalLight.shadow.mapSize.height = 1024;
       scene.add(directionalLight);
 
-      // Load 3D model
-      const loader = new GLTFLoader();
-      loader.load(
+      // Load 3D model with optimized loader
+      const loader = createOptimizedLoader();
+      loadGLTFModel(
+        loader,
         "/khue_van_cac.glb",
         (gltf) => {
           const model = gltf.scene;
@@ -70,13 +75,10 @@ const KhueVanCac3DView = () => {
           const scale = 1.5 / maxDim;
           model.scale.multiplyScalar(scale);
 
-          // Optimize model rendering
-          model.traverse((child) => {
-            if (child.isMesh) {
-              child.castShadow = false;
-              child.receiveShadow = false;
-            }
-          });
+          // Call optimizeScene for faster rendering
+          optimizeScene(model);
+
+          scene.add(model);
 
           scene.add(model);
           setIsLoading(false);
@@ -144,15 +146,16 @@ const KhueVanCac3DView = () => {
         },
         (progress) => {
           // Loading progress
-          console.log(
-            `Loading... ${((progress.loaded / progress.total) * 100).toFixed(2)}%`,
+          const percentComplete = Math.round(
+            (progress.loaded / progress.total) * 100,
           );
+          console.log(`Loading... ${percentComplete}%`);
         },
-        (err) => {
-          console.error("Error loading model:", err);
-          setError("Không thể tải mô hình 3D. Vui lòng thử lại.");
+        (error) => {
+          console.error("Error loading model:", error);
           setIsLoading(false);
         },
+        40000, // 40 second timeout for Azure
       );
 
       // Handle window resize
