@@ -60,8 +60,8 @@ const items = [
   },
   {
     id: 8,
-    name: "Hòn Trong Mái",
-    desc: "Hòn đảo linh thiêng trên Hồ Gươm với ngôi đền cổ yên bình tĩnh lặng",
+    name: "Hòn Trống Mái",
+    desc: "Cặp đá kỳ vĩ hình gà trống gà mái tại Vịnh Hạ Long – biểu tượng tình yêu bất diệt",
     image: "/hon-trong-mai.jpg",
     badge: "Linh thiêng",
     route: "/3d-viewer-hon-trong-mai",
