@@ -613,7 +613,7 @@
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 6rem 3rem;
+  gap: 5rem 3rem;
   margin-bottom: 3rem;
 }
 
@@ -757,7 +757,7 @@
 
 .view-all-products {
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 6rem;
 }
 
 /* Team Section */
@@ -956,6 +956,10 @@
   .team-slide {
     width: 100%;
     max-width: 250px;
+  }
+
+  .view-all-products {
+    width: 85%;
   }
 }
 

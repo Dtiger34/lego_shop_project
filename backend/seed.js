@@ -1,231 +1,224 @@
-const mongoose = require('mongoose')
-const bcryptjs = require('bcryptjs')
-require('dotenv').config()
+const mongoose = require("mongoose");
+const bcryptjs = require("bcryptjs");
+require("dotenv").config();
 
 // Import Models
-const User = require('./model/User')
-const Category = require('./model/Category')
-const Product = require('./model/Product')
-const Review = require('./model/Review')
-const Cart = require('./model/Cart')
-const Order = require('./model/Order')
+const User = require("./model/User");
+const Category = require("./model/Category");
+const Product = require("./model/Product");
+const Review = require("./model/Review");
+const Cart = require("./model/Cart");
+const Order = require("./model/Order");
 
 // Connect to MongoDB
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/legoshop')
-    console.log('MongoDB đã kết nối')
+    await mongoose.connect(
+      process.env.MONGO_URI || "mongodb://localhost:27017/legoshop",
+    );
+    console.log("MongoDB đã kết nối");
   } catch (err) {
-    console.error('MongoDB connection failed:', err.message)
-    process.exit(1)
+    console.error("MongoDB connection failed:", err.message);
+    process.exit(1);
   }
-}
+};
 
 // Clear all collections
 const clearDB = async () => {
   try {
-    await User.deleteMany({})
-    await Category.deleteMany({})
-    await Product.deleteMany({})
-    await Review.deleteMany({})
-    await Cart.deleteMany({})
-    await Order.deleteMany({})
-    console.log('Cơ sở dữ liệu đã xóa')
+    await User.deleteMany({});
+    await Category.deleteMany({});
+    await Product.deleteMany({});
+    await Review.deleteMany({});
+    await Cart.deleteMany({});
+    await Order.deleteMany({});
+    console.log("Cơ sở dữ liệu đã xóa");
   } catch (err) {
-    console.error('Error clearing database:', err.message)
+    console.error("Error clearing database:", err.message);
   }
-}
+};
 
 // Seed data
 const seedDB = async () => {
   try {
     // ===== CATEGORIES =====
     const categories = await Category.insertMany([
-      { name: 'Đồ chơi xếp hình City', slug: 'lego-city' },
-      { name: 'Đồ chơi xếp hình Technic', slug: 'lego-technic' },
-      { name: 'Đồ chơi xếp hình Star Wars', slug: 'lego-star-wars' },
-      { name: 'Đồ chơi xếp hình Creator', slug: 'lego-creator' },
-      { name: 'Đồ chơi xếp hình Marvel', slug: 'lego-marvel' },
-      { name: 'Đồ chơi xếp hình Ninjago', slug: 'lego-ninjago' }
-    ])
-    console.log('✓ Danh mục đã được thêm:', categories.length)
+      { name: "Di tích Hà Nội", slug: "di-tich-ha-noi" },
+      { name: "Di tích Miền Trung & Miền Nam", slug: "di-tich-mien-trung-nam" },
+    ]);
+    console.log("✓ Danh mục đã được thêm:", categories.length);
 
     // ===== USERS =====
     const hashPassword = async (pwd) => {
-      const salt = await bcryptjs.genSalt(10)
-      return await bcryptjs.hash(pwd, salt)
-    }
+      const salt = await bcryptjs.genSalt(10);
+      return await bcryptjs.hash(pwd, salt);
+    };
 
     const users = await User.insertMany([
       {
-        name: 'Quản Trị Viên',
-        email: 'admin@legoshop.com',
-        password: await hashPassword('admin123'),
-        role: 'admin'
+        name: "Quản Trị Viên",
+        email: "admin@legoshop.com",
+        password: await hashPassword("admin123"),
+        role: "admin",
       },
       {
-        name: 'Nguyễn Văn An',
-        email: 'nguyenvana@example.com',
-        password: await hashPassword('user123'),
-        role: 'user'
+        name: "Nguyễn Văn An",
+        email: "nguyenvana@example.com",
+        password: await hashPassword("user123"),
+        role: "user",
       },
       {
-        name: 'Trần Thị Bình',
-        email: 'tranthib@example.com',
-        password: await hashPassword('user123'),
-        role: 'user'
+        name: "Trần Thị Bình",
+        email: "tranthib@example.com",
+        password: await hashPassword("user123"),
+        role: "user",
       },
       {
-        name: 'Lê Hoàng Cường',
-        email: 'lehoangc@example.com',
-        password: await hashPassword('user123'),
-        role: 'user'
-      }
-    ])
-    console.log('✓ Người dùng đã được thêm:', users.length)
+        name: "Lê Hoàng Cường",
+        email: "lehoangc@example.com",
+        password: await hashPassword("user123"),
+        role: "user",
+      },
+    ]);
+    console.log("✓ Người dùng đã được thêm:", users.length);
 
     // ===== PRODUCTS =====
     const products = await Product.insertMany([
-      // Đồ chơi xếp hình City
+      // Hà Nội
       {
-        name: 'Đồ chơi xếp hình City Police Station 60316',
+        name: "Bộ Xếp Hình Khuê Văn Các - Văn Miếu Quốc Tử Giám",
         price: 1250000,
-        description: 'Đồn cảnh sát thành phố với 668 mảnh ghép. Bao gồm xe cảnh sát, xe mô tô và 5 nhân vật. Phù hợp cho bé từ 7 tuổi trở lên.',
-        images: ['/uploads/lego-city-police.jpg'],
+        description:
+          "Tái hiện Khuê Văn Các – cổng vinh quang của Văn Miếu Quốc Tử Giám với kiến trúc gỗ tinh xảo thế kỷ XV. 520 mảnh ghép cao cấp, kèm sách hướng dẫn lắp ráp song ngữ. Phù hợp từ 10 tuổi.",
+        images: ["/khue-van-cac.jpg"],
         category: categories[0]._id,
         stock: 30,
-        sold: 45,
-        rating: 4.7,
-        numReviews: 18
+        sold: 48,
+        rating: 4.9,
+        numReviews: 21,
+        viewerUrl: "/3d-viewer-khue-van-cac",
       },
       {
-        name: 'Đồ chơi xếp hình City Fire Station 60320',
+        name: "Bộ Xếp Hình Cột Cờ Hà Nội - Biểu Tượng Thủ Đô",
         price: 980000,
-        description: 'Trạm cứu hỏa thành phố với 540 mảnh. Xe cứu hỏa, xe thang và 4 lính cứu hỏa. Phù hợp cho bé từ 6 tuổi.',
-        images: ['/uploads/lego-city-fire.jpg'],
+        description:
+          "Cột Cờ Hà Nội – công trình kiến trúc quân sự nổi tiếng được xây từ năm 1812. 380 mảnh ghép chi tiết, bao gồm cột cờ cao 41 mét thu nhỏ tỷ lệ 1:100. Phù hợp từ 8 tuổi.",
+        images: ["/cotcohanoi.jpg"],
         category: categories[0]._id,
         stock: 25,
-        sold: 38,
-        rating: 4.6,
-        numReviews: 14
-      },
-      {
-        name: 'Đồ chơi xếp hình City Airport 60261',
-        price: 1850000,
-        description: 'Sân bay thành phố với 286 mảnh. Máy bay, xe phục vụ sân bay và 6 nhân vật. Phù hợp từ 6 tuổi.',
-        images: ['/uploads/lego-city-airport.jpg'],
-        category: categories[0]._id,
-        stock: 15,
-        sold: 22,
-        rating: 4.5,
-        numReviews: 10
-      },
-      // Đồ chơi xếp hình Technic
-      {
-        name: 'Đồ chơi xếp hình Technic Ferrari Daytona SP3 42143',
-        price: 8500000,
-        description: 'Siêu xe Ferrari Daytona SP3 tỉ lệ 1:8 với 3778 mảnh ghép. Chi tiết kỹ thuật cực kỳ tinh xảo với động cơ V12 mô phỏng thực tế.',
-        images: ['/uploads/lego-technic-ferrari.jpg'],
-        category: categories[1]._id,
-        stock: 8,
-        sold: 12,
-        rating: 5.0,
-        numReviews: 9
-      },
-      {
-        name: 'Đồ chơi xếp hình Technic Land Rover Defender 42110',
-        price: 4200000,
-        description: 'Land Rover Defender tỉ lệ 1:8 với 2573 mảnh. Hộp số thực tế, cầu xe hoạt động và hệ thống lái chính xác.',
-        images: ['/uploads/lego-technic-landrover.jpg'],
-        category: categories[1]._id,
-        stock: 12,
-        sold: 20,
-        rating: 4.9,
-        numReviews: 15
-      },
-      // Đồ chơi xếp hình Star Wars
-      {
-        name: 'Đồ chơi xếp hình Star Wars Millennium Falcon 75257',
-        price: 3200000,
-        description: 'Phi thuyền Millennium Falcon huyền thoại với 1353 mảnh. Bao gồm Han Solo, Chewbacca, Rey và các nhân vật nổi tiếng.',
-        images: ['/uploads/lego-sw-falcon.jpg'],
-        category: categories[2]._id,
-        stock: 10,
-        sold: 28,
-        rating: 4.9,
-        numReviews: 22
-      },
-      {
-        name: 'Đồ chơi xếp hình Star Wars AT-AT 75313',
-        price: 7800000,
-        description: 'Máy bộ binh AT-AT khổng lồ với 6785 mảnh — một trong những bộ đồ chơi xếp hình lớn nhất từ trước đến nay.',
-        images: ['/uploads/lego-sw-atat.jpg'],
-        category: categories[2]._id,
-        stock: 5,
-        sold: 7,
-        rating: 5.0,
-        numReviews: 6
-      },
-      // Đồ chơi xếp hình Creator
-      {
-        name: 'Đồ chơi xếp hình Creator Expert Eiffel Tower 10307',
-        price: 5500000,
-        description: 'Tháp Eiffel cao 1.5 mét với 10001 mảnh ghép. Bộ đồ chơi xếp hình Creator Expert danh tiếng, dành cho người sưu tầm.',
-        images: ['/uploads/lego-creator-eiffel.jpg'],
-        category: categories[3]._id,
-        stock: 7,
-        sold: 14,
-        rating: 4.8,
-        numReviews: 11
-      },
-      {
-        name: 'Đồ chơi xếp hình Creator 3-in-1 Dragon 31112',
-        price: 750000,
-        description: 'Rồng sáng tạo 3-trong-1: lắp được mô hình rồng, cá, hay đại bàng. 234 mảnh, phù hợp từ 6 tuổi.',
-        images: ['/uploads/lego-creator-dragon.jpg'],
-        category: categories[3]._id,
-        stock: 35,
-        sold: 60,
-        rating: 4.6,
-        numReviews: 24
-      },
-      // Đồ chơi xếp hình Marvel
-      {
-        name: 'Đồ chơi xếp hình Marvel Avengers Tower 76166',
-        price: 2650000,
-        description: 'Trụ sở Avengers với 509 mảnh. Bao gồm Iron Man, Thor, Hulk, Black Widow và nhiều siêu anh hùng yêu thích.',
-        images: ['/uploads/lego-marvel-avengers.jpg'],
-        category: categories[4]._id,
-        stock: 18,
         sold: 35,
         rating: 4.7,
-        numReviews: 19
-      },
-      // Đồ chơi xếp hình Ninjago
-      {
-        name: 'Đồ chơi xếp hình Ninjago City Markets 71799',
-        price: 3900000,
-        description: 'Khu chợ thành phố Ninjago 3 tầng rực rỡ với 6163 mảnh. Bao gồm 18 nhân vật và hàng chục chi tiết thú vị.',
-        images: ['/uploads/lego-ninjago-city.jpg'],
-        category: categories[5]._id,
-        stock: 9,
-        sold: 15,
-        rating: 4.9,
-        numReviews: 13
+        numReviews: 16,
+        viewerUrl: "/3d-viewer-cot-co",
       },
       {
-        name: 'Đồ chơi xếp hình Ninjago Ninja Dojo Temple 71767',
-        price: 1450000,
-        description: 'Đền dojo ninja với 1394 mảnh. Bao gồm 6 nhân vật ninja và nhiều vũ khí bí ẩn.',
-        images: ['/uploads/lego-ninjago-dojo.jpg'],
-        category: categories[5]._id,
-        stock: 20,
-        sold: 32,
+        name: "Bộ Xếp Hình Tháp Rùa - Biểu Tượng Hồ Gươm",
+        price: 850000,
+        description:
+          "Tháp Rùa huyền thoại tọa lạc giữa Hồ Hoàn Kiếm – biểu tượng lâu đời nhất của Hà Nội. 310 mảnh ghép, cao 18 cm sau khi lắp. Phù hợp từ 8 tuổi.",
+        images: ["/thap-rua.jpg"],
+        category: categories[0]._id,
+        stock: 40,
+        sold: 62,
+        rating: 4.8,
+        numReviews: 28,
+        viewerUrl: "/3d-viewer-thap-rua",
+      },
+      {
+        name: "Bộ Xếp Hình Tháp Bút - Di Tích Văn Hóa Hồ Gươm",
+        price: 750000,
+        description:
+          'Tháp Bút bên cạnh cầu Thê Húc – biểu tượng của chữ viết và tinh thần học vấn Việt Nam. 280 mảnh, kèm chi tiết nhỏ mô phỏng chữ khắc "Tả Thanh Thiên". Phù hợp từ 8 tuổi.',
+        images: ["/thap-but.jpg"],
+        category: categories[0]._id,
+        stock: 35,
+        sold: 41,
+        rating: 4.6,
+        numReviews: 14,
+        viewerUrl: "/3d-viewer-thap-but",
+      },
+      {
+        name: "Bộ Xếp Hình Cầu Thê Húc - Cầu Cổ Giữa Hồ Gươm",
+        price: 690000,
+        description:
+          "Cầu Thê Húc sơn đỏ nổi tiếng dẫn vào đền Ngọc Sơn trên Hồ Hoàn Kiếm. 245 mảnh, màu sắc truyền thống, cao 12 cm. Phù hợp từ 7 tuổi.",
+        images: ["/cau-the-huc.jpg"],
+        category: categories[0]._id,
+        stock: 45,
+        sold: 58,
         rating: 4.7,
-        numReviews: 16
-      }
-    ])
-    console.log('✓ Sản phẩm đã được thêm:', products.length)
+        numReviews: 23,
+        viewerUrl: "/3d-viewer-cau-the-huc",
+      },
+      {
+        name: "Bộ Xếp Hình Đền Ngọc Sơn - Đền Thờ Giữa Hồ Gươm",
+        price: 1100000,
+        description:
+          "Đền Ngọc Sơn tọa lạc trên đảo Ngọc giữa Hồ Hoàn Kiếm – kiệt tác kiến trúc tâm linh Hà Nội thế kỷ XIX. 460 mảnh ghép, bao gồm cầu Thê Húc thu nhỏ. Phù hợp từ 10 tuổi.",
+        images: ["/den-ngoc-son.jpg"],
+        category: categories[0]._id,
+        stock: 28,
+        sold: 33,
+        rating: 4.8,
+        numReviews: 17,
+        viewerUrl: "/3d-viewer-den-ngoc-son",
+      },
+      {
+        name: "Bộ Xếp Hình Lăng Chủ Tịch Hồ Chí Minh",
+        price: 1450000,
+        description:
+          "Công trình lịch sử trang nghiêm tại Quảng trường Ba Đình – nơi yên nghỉ của Chủ tịch Hồ Chí Minh. 580 mảnh ghép, kiến trúc tỷ lệ 1:150, kèm quảng trường và cột cờ. Phù hợp từ 12 tuổi.",
+        images: ["/lang-bac.jpg"],
+        category: categories[1]._id,
+        stock: 20,
+        sold: 29,
+        rating: 4.9,
+        numReviews: 19,
+        viewerUrl: "/3d-viewer-lang-bac",
+      },
+      // Miền Trung
+      {
+        name: "Bộ Xếp Hình Ngọ Môn Huế - Cổng Chính Hoàng Thành",
+        price: 1650000,
+        description:
+          "Ngọ Môn – cổng chính uy nghi của Hoàng Thành Huế, nơi triều Nguyễn thực hiện nghi lễ quan trọng nhất. 680 mảnh, tỷ lệ 1:120, mô phỏng 5 lối đi và lầu Ngũ Phụng. Phù hợp từ 12 tuổi.",
+        images: ["/ngo-mon-hue.jpg"],
+        category: categories[1]._id,
+        stock: 18,
+        sold: 22,
+        rating: 4.8,
+        numReviews: 13,
+        viewerUrl: "/3d-viewer-ngo-mon",
+      },
+      // Miền Nam
+      {
+        name: "Bộ Xếp Hình Chùa Một Cột - Kiệt Tác Kiến Trúc",
+        price: 920000,
+        description:
+          "Chùa Một Cột – ngôi chùa độc đáo hình bông sen nở nằm trên một trụ đá giữa hồ nước. 350 mảnh ghép, thiết kế thu nhỏ tỷ lệ 1:80 kèm hồ sen. Phù hợp từ 9 tuổi.",
+        images: ["/chuamotcot.jpg"],
+        category: categories[0]._id,
+        stock: 32,
+        sold: 44,
+        rating: 4.7,
+        numReviews: 20,
+        viewerUrl: "/3d-viewer/chua-mot-cot",
+      },
+      {
+        name: "Bộ Xếp Hình Hòn Trống Mái - Kỳ Quan Vịnh Bắc Bộ",
+        price: 890000,
+        description:
+          "Hòn Trống Mái – cặp đá tự nhiên huyền thoại trên Vịnh Hạ Long biểu trưng cho tình yêu vĩnh cửu. 330 mảnh, mô phỏng cảnh biển hùng vĩ với sóng và đảo đá. Phù hợp từ 9 tuổi.",
+        images: ["/hon-trong-mai.jpg"],
+        category: categories[1]._id,
+        stock: 22,
+        sold: 27,
+        rating: 4.6,
+        numReviews: 12,
+        viewerUrl: "/3d-viewer-hon-trong-mai",
+      },
+    ]);
+    console.log("✓ Sản phẩm đã được thêm:", products.length);
 
     // ===== REVIEWS =====
     const reviews = await Review.insertMany([
@@ -233,40 +226,46 @@ const seedDB = async () => {
         user: users[1]._id,
         product: products[0]._id,
         rating: 5,
-        comment: 'Bộ đồn cảnh sát rất tuyệt! Con tôi thích mê. Mảnh ghép chắc chắn, màu sắc đẹp.'
+        comment:
+          "Bộ Khuê Văn Các rất tuyệt! Mảnh ghép chắc chắn, kiến trúc đẹp và chi tiết. Con tôi mê lắm!",
       },
       {
         user: users[2]._id,
         product: products[0]._id,
-        rating: 4,
-        comment: 'Chất lượng tốt, đúng hàng chính hãng. Giao hàng nhanh và đóng gói cẩn thận.'
+        rating: 5,
+        comment:
+          "Chất lượng xuất sắc, sách hướng dẫn rõ ràng. Lắp xong trưng bày rất đẹp.",
       },
       {
         user: users[3]._id,
-        product: products[3]._id,
+        product: products[2]._id,
         rating: 5,
-        comment: 'Bộ Ferrari siêu đẹp! Động cơ V12 mô phỏng rất chi tiết. Xứng đáng với giá tiền.'
+        comment:
+          "Tháp Rùa mini siêu dễ thương! Đặt trên bàn làm việc nhìn rất ý nghĩa.",
       },
       {
         user: users[1]._id,
-        product: products[5]._id,
+        product: products[6]._id,
         rating: 5,
-        comment: 'Millennium Falcon quá ấn tượng! Từng chi tiết đều rất chuẩn so với phim. Đóng gói đẹp.'
+        comment:
+          "Bộ Lăng Bác trang trọng và chi tiết. Quảng trường thu nhỏ rất ấn tượng.",
       },
       {
         user: users[2]._id,
         product: products[8]._id,
-        rating: 5,
-        comment: 'Rồng 3-in-1 giá rẻ mà chất lượng cao. Con bé nhà tôi lắp đi lắp lại hoài không chán!'
+        rating: 4,
+        comment:
+          "Chùa Một Cột giá tốt mà chất lượng cao. Hồ sen kèm theo rất thú vị!",
       },
       {
         user: users[3]._id,
-        product: products[9]._id,
-        rating: 4,
-        comment: 'Bộ Avengers Tower đẹp, nhân vật đầy đủ. Hướng dẫn lắp ráp rõ ràng, dễ theo.'
-      }
-    ])
-    console.log('✓ Đánh giá đã được thêm:', reviews.length)
+        product: products[7]._id,
+        rating: 5,
+        comment:
+          "Ngọ Môn Huế hoành tráng! Lầu Ngũ Phụng được mô phỏng rất chuẩn. Xứng đáng với giá tiền.",
+      },
+    ]);
+    console.log("✓ Đánh giá đã được thêm:", reviews.length);
 
     // ===== CARTS =====
     const carts = await Cart.insertMany([
@@ -274,90 +273,113 @@ const seedDB = async () => {
         user: users[1]._id,
         items: [
           { product: products[0]._id, quantity: 1 },
-          { product: products[8]._id, quantity: 2 }
-        ]
+          { product: products[2]._id, quantity: 1 },
+        ],
       },
       {
         user: users[2]._id,
-        items: [
-          { product: products[5]._id, quantity: 1 }
-        ]
-      }
-    ])
-    console.log('✓ Giỏ hàng đã được thêm:', carts.length)
+        items: [{ product: products[6]._id, quantity: 1 }],
+      },
+    ]);
+    console.log("✓ Giỏ hàng đã được thêm:", carts.length);
 
     // ===== ORDERS =====
     const orders = await Order.insertMany([
       {
         user: users[1]._id,
         items: [
-          { product: products[0]._id, name: products[0].name, price: products[0].price, quantity: 1 },
-          { product: products[8]._id, name: products[8].name, price: products[8].price, quantity: 2 }
+          {
+            product: products[0]._id,
+            name: products[0].name,
+            price: products[0].price,
+            quantity: 1,
+          },
+          {
+            product: products[2]._id,
+            name: products[2].name,
+            price: products[2].price,
+            quantity: 1,
+          },
         ],
-        totalPrice: products[0].price + products[8].price * 2,
+        totalPrice: products[0].price + products[2].price,
         shippingAddress: {
-          fullName: 'Nguyễn Văn An',
-          phone: '0912345678',
-          address: '123 Đường Nguyễn Huệ, Quận 1, TP.HCM'
+          fullName: "Nguyễn Văn An",
+          phone: "0912345678",
+          address: "123 Đường Nguyễn Huệ, Quận 1, TP.HCM",
         },
-        status: 'completed',
-        paymentMethod: 'Credit Card',
+        status: "completed",
+        paymentMethod: "Credit Card",
         isPaid: true,
-        paidAt: new Date('2026-02-10')
+        paidAt: new Date("2026-02-10"),
       },
       {
         user: users[2]._id,
         items: [
-          { product: products[5]._id, name: products[5].name, price: products[5].price, quantity: 1 },
-          { product: products[9]._id, name: products[9].name, price: products[9].price, quantity: 1 }
+          {
+            product: products[7]._id,
+            name: products[7].name,
+            price: products[7].price,
+            quantity: 1,
+          },
+          {
+            product: products[8]._id,
+            name: products[8].name,
+            price: products[8].price,
+            quantity: 1,
+          },
         ],
-        totalPrice: products[5].price + products[9].price,
+        totalPrice: products[7].price + products[8].price,
         shippingAddress: {
-          fullName: 'Trần Thị Bình',
-          phone: '0987654321',
-          address: '456 Đường Trần Hưng Đạo, Quận 4, TP.HCM'
+          fullName: "Trần Thị Bình",
+          phone: "0987654321",
+          address: "456 Đường Trần Hưng Đạo, Quận 4, TP.HCM",
         },
-        status: 'shipping',
-        paymentMethod: 'Bank Transfer',
+        status: "shipping",
+        paymentMethod: "Bank Transfer",
         isPaid: true,
-        paidAt: new Date('2026-02-15')
+        paidAt: new Date("2026-02-15"),
       },
       {
         user: users[3]._id,
         items: [
-          { product: products[3]._id, name: products[3].name, price: products[3].price, quantity: 1 }
+          {
+            product: products[6]._id,
+            name: products[6].name,
+            price: products[6].price,
+            quantity: 1,
+          },
         ],
-        totalPrice: products[3].price,
+        totalPrice: products[6].price,
         shippingAddress: {
-          fullName: 'Lê Hoàng Cường',
-          phone: '0933333333',
-          address: '789 Đường Võ Văn Kiệt, Quận 5, TP.HCM'
+          fullName: "Lê Hoàng Cường",
+          phone: "0933333333",
+          address: "789 Đường Võ Văn Kiệt, Quận 5, TP.HCM",
         },
-        status: 'pending',
-        paymentMethod: 'COD',
-        isPaid: false
-      }
-    ])
-    console.log('✓ Đơn hàng đã được thêm:', orders.length)
+        status: "pending",
+        paymentMethod: "COD",
+        isPaid: false,
+      },
+    ]);
+    console.log("✓ Đơn hàng đã được thêm:", orders.length);
 
-    console.log('\n✅ Dữ liệu đã được thêm vào cơ sở dữ liệu thành công!')
-    console.log('\n📋 Tài khoản mẫu:')
-    console.log('   Admin  : admin@legoshop.com  / admin123')
-    console.log('   User 1 : nguyenvana@example.com / user123')
-    console.log('   User 2 : tranthib@example.com   / user123')
-    console.log('   User 3 : lehoangc@example.com   / user123')
+    console.log("\n✅ Dữ liệu đã được thêm vào cơ sở dữ liệu thành công!");
+    console.log("\n📋 Tài khoản mẫu:");
+    console.log("   Admin  : admin@legoshop.com  / admin123");
+    console.log("   User 1 : nguyenvana@example.com / user123");
+    console.log("   User 2 : tranthib@example.com   / user123");
+    console.log("   User 3 : lehoangc@example.com   / user123");
   } catch (err) {
-    console.error('Error seeding database:', err)
+    console.error("Error seeding database:", err);
   }
-}
+};
 
 // Run seed
 const runSeed = async () => {
-  await connectDB()
-  await clearDB()
-  await seedDB()
-  await mongoose.connection.close()
-  console.log('\nKết nối đã đóng.')
-}
+  await connectDB();
+  await clearDB();
+  await seedDB();
+  await mongoose.connection.close();
+  console.log("\nKết nối đã đóng.");
+};
 
-runSeed()
+runSeed();

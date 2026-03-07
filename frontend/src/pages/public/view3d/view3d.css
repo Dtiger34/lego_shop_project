@@ -125,18 +125,6 @@
   border-color: var(--light-gold);
 }
 
-.viewer-label {
-  padding: 1rem 1.5rem;
-  font-size: 0.9375rem;
-  color: var(--primary-navy);
-  font-weight: 600;
-  text-align: center;
-  background: rgba(212, 168, 67, 0.05);
-  border-bottom: 1px solid rgba(212, 168, 67, 0.2);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
 .view3d-main {
   flex: 1;
   position: relative;
@@ -154,12 +142,97 @@
 }
 
 .viewer-footer {
-  padding: 0.75rem 1.5rem;
-  font-size: 0.8125rem;
-  color: var(--text-light);
-  text-align: center;
+  padding: 0.6rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
   background: rgba(212, 168, 67, 0.05);
   border-top: 1px solid rgba(212, 168, 67, 0.2);
+}
+
+.viewer-hint {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: default;
+  color: var(--text-light);
+  opacity: 0.65;
+  transition: opacity 0.25s;
+}
+
+.viewer-hint:hover {
+  opacity: 1;
+}
+
+.hint-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--accent-gold);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.viewer-hint:hover .hint-icon-rotate {
+  animation: hint-spin 0.7s ease-in-out;
+}
+
+.viewer-hint:hover .hint-icon-arrows {
+  transform: scale(1.2);
+}
+
+.viewer-hint:hover .hint-icon-zoom {
+  transform: scale(1.2);
+}
+
+@keyframes hint-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.hint-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-light);
+  white-space: nowrap;
+}
+
+.hint-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary-navy);
+  color: #fff;
+  padding: 0.3rem 0.65rem;
+  border-radius: 5px;
+  font-size: 0.72rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 20;
+}
+
+.hint-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--primary-navy);
+}
+
+.viewer-hint:hover .hint-tooltip {
+  opacity: 1;
+}
+
+.hint-sep {
+  font-size: 0.75rem;
+  color: rgba(212, 168, 67, 0.5);
+  user-select: none;
 }
 
 /* Loading State */

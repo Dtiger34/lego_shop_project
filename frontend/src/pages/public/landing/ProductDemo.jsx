@@ -42,26 +42,6 @@ export default function ProductDemo() {
     },
     {
       id: 4,
-      name: "Khuê Văn Các",
-      description:
-        "Cổng vinh quang của Văn Miếu Quốc Tử Giám, biểu tượng của văn hóa học vấn truyền thống",
-      image: "/khue-van-cac.jpg",
-      price: 1420000,
-      badge: "Văn hóa",
-      route: "/3d-viewer-khue-van-cac",
-    },
-    {
-      id: 5,
-      name: "Ngọ Môn Huế",
-      description:
-        "Cổng chính của Kiến Trúc Hoàng Thành Huế, kiệt tác kiến trúc thời phong kiến Việt Nam",
-      image: "/ngo-mon-hue.jpg",
-      price: 1380000,
-      badge: "Hoàng thành",
-      route: "/3d-viewer-ngo-mon",
-    },
-    {
-      id: 6,
       name: "Đền Ngọc Sơn",
       description:
         "Đền thờ trên đảo nhỏ giữa Hồ Gươm, nơi yên tĩnh của Hà Nội xưa với kiến trúc thanh thoát",
@@ -71,7 +51,7 @@ export default function ProductDemo() {
       route: "/3d-viewer-den-ngoc-son",
     },
     {
-      id: 7,
+      id: 5,
       name: "Cầu Thê Húc",
       description:
         "Cầu gỗ cổ kính giữa Hồ Gươm với kiến trúc cong thanh nhã, nối liền Đền Ngọc Sơn",
@@ -81,34 +61,14 @@ export default function ProductDemo() {
       route: "/3d-viewer-cau-the-huc",
     },
     {
-      id: 8,
-      name: "Hòn Trong Mái",
+      id: 6,
+      name: "Khuê Văn Các",
       description:
-        "Hòn đảo linh thiêng giữa Hồ Gươm với ngôi đền cổ, nơi yên bình và tĩnh lặng",
-      image: "/hon-trong-mai.jpg",
-      price: 2180000,
-      badge: "Linh thiêng",
-      route: "/3d-viewer-hon-trong-mai",
-    },
-    {
-      id: 9,
-      name: "Tháp Bút",
-      description:
-        "Tháp cổ có hình dáng như một cây bút chuôi, biểu tượng của học vấn và chữ viết",
-      image: "/thap-but.jpg",
+        "Cổng vinh quang của Văn Miếu Quốc Tử Giám, biểu tượng của văn hóa học vấn truyền thống",
+      image: "/khue-van-cac.jpg",
       price: 1420000,
       badge: "Văn hóa",
-      route: "/3d-viewer-thap-but",
-    },
-    {
-      id: 10,
-      name: "Tháp Rùa",
-      description:
-        "Tháp tôn vinh con rùa thần - biểu tượng của tuổi thọ, khôn ngoan và may mắn",
-      image: "/thap-rua.jpg",
-      price: 1950000,
-      badge: "Truyền thống",
-      route: "/3d-viewer-thap-rua",
+      route: "/3d-viewer-khue-van-cac",
     },
   ];
 

@@ -353,21 +353,27 @@
   margin-bottom: 1rem;
 }
 
+.product-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: auto;
+}
+
 .add-to-cart-btn {
-  width: 100%;
-  padding: 0.875rem 1.5rem;
+  flex: 1;
+  padding: 0.875rem 1rem;
   background: linear-gradient(135deg, #34495e, #4a5f7f);
   color: white;
   border: none;
   border-radius: 0.75rem;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.95rem;
   cursor: pointer;
   transition: all 0.3s;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .add-to-cart-btn:hover {
@@ -377,6 +383,28 @@
 
 .add-to-cart-btn:active {
   transform: translateY(0);
+}
+
+.view3d-btn {
+  flex-shrink: 0;
+  padding: 0.875rem 0.9rem;
+  background: linear-gradient(135deg, #d4a843, #f0c674);
+  color: #1e2a3a;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+
+.view3d-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(212, 168, 67, 0.4);
 }
 
 /* No Results */
