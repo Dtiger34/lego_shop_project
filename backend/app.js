@@ -1,6 +1,17 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 
+app.use(
+  cors({
+    origin: [
+      "https://viettich.store",
+      "https://www.viettich.store",
+      "https://bamboshop.azurewebsites.net",
+    ],
+    credentials: true,
+  }),
+);
 // middleware
 app.use(express.json());
 
