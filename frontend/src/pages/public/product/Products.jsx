@@ -1,23 +1,9 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useCart } from "../../../context/CartContext";
 import { getAllProducts } from "../../../service/productAPI";
 import { getAllCategories } from "../../../service/categoryAPI";
 import { API_BASE_URL } from "../../../service/config";
 import "./Products.css";
-
-const VIEW3D_ROUTES = {
-  "Chùa Một Cột": "/3d-viewer/chua-mot-cot",
-  "Cột Cờ Hà Nội": "/3d-viewer-cot-co",
-  "Lăng chủ tịch Hồ Chí Minh": "/3d-viewer-lang-bac",
-  "Khuê Văn Các": "/3d-viewer-khue-van-cac",
-  "Ngọ Môn Huế": "/3d-viewer-ngo-mon",
-  "Đền Ngọc Sơn": "/3d-viewer-den-ngoc-son",
-  "Cầu Thê Húc": "/3d-viewer-cau-the-huc",
-  "Hòn Trong Mái": "/3d-viewer-hon-trong-mai",
-  "Tháp Bút": "/3d-viewer-thap-but",
-  "Tháp Rùa": "/3d-viewer-thap-rua",
-};
 
 export default function Products() {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -28,7 +14,6 @@ export default function Products() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const { openModal } = useCart();
-  const navigate = useNavigate();
 
   useEffect(() => {
     loadData();
@@ -214,25 +199,12 @@ export default function Products() {
                       {formatPrice(product.price)}
                     </div>
 
-                    <div className="product-actions">
-                      {VIEW3D_ROUTES[product.name] && (
-                        <button
-                          className="view3d-btn"
-                          onClick={() => {
-                            window.scrollTo(0, 0);
-                            navigate(VIEW3D_ROUTES[product.name]);
-                          }}
-                        >
-                          <span>🏛️</span> Xem 3D
-                        </button>
-                      )}
-                      <button
-                        className="add-to-cart-btn"
-                        onClick={() => openModal(product)}
-                      >
-                        <span>🛒</span> Thêm vào giỏ
-                      </button>
-                    </div>
+                    <button
+                      className="add-to-cart-btn"
+                      onClick={() => openModal(product)}
+                    >
+                      <span>🛒</span> Thêm vào giỏ
+                    </button>
                   </div>
                 ))
               ) : (

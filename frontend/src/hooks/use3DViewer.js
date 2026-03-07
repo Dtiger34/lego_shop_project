@@ -64,7 +64,7 @@ const use3DViewer = (glbPath, { highQuality = false } = {}) => {
 
           model.position.sub(center);
           const maxDim = Math.max(size.x, size.y, size.z);
-          model.scale.multiplyScalar(1.5 / maxDim);
+          model.scale.multiplyScalar(1.2 / maxDim);
           // Face model toward camera (front = +X → rotate to +Z)
           model.rotation.y = -Math.PI / 2;
 
@@ -78,12 +78,17 @@ const use3DViewer = (glbPath, { highQuality = false } = {}) => {
           scene.add(model);
           setIsLoading(false);
 
+          // Slow auto-rotation
+          let autoRotate = true;
+          const autoRotationSpeed = 0.002;
+
           // Mouse drag
           let isDragging = false;
           let previousMousePosition = { x: 0, y: 0 };
 
           renderer.domElement.addEventListener("mousedown", (e) => {
             isDragging = true;
+            autoRotate = false;
             previousMousePosition = { x: e.clientX, y: e.clientY };
           });
 
@@ -98,10 +103,12 @@ const use3DViewer = (glbPath, { highQuality = false } = {}) => {
 
           renderer.domElement.addEventListener("mouseup", () => {
             isDragging = false;
+            autoRotate = true;
           });
 
           renderer.domElement.addEventListener("mouseleave", () => {
             isDragging = false;
+            autoRotate = true;
           });
 
           // Wheel zoom
@@ -118,6 +125,7 @@ const use3DViewer = (glbPath, { highQuality = false } = {}) => {
           // Animation loop
           const animate = () => {
             requestAnimationFrame(animate);
+            if (autoRotate) model.rotation.y += autoRotationSpeed;
             renderer.render(scene, camera);
           };
           animate();

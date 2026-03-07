@@ -106,6 +106,13 @@ export default function ProductDemo() {
 
               <button
                 className="product-btn"
+                onClick={() => navigate("/products")}
+              >
+                Tới trang sản phẩm để đặt hàng
+              </button>
+
+              <button
+                className="product-btn"
                 onClick={() => handleProductClick(product)}
               >
                 Xem mô hình 3D

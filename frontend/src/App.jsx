@@ -37,6 +37,7 @@ import CauTheHucViewer from "./pages/public/view3d/CauTheHucViewer";
 import HonTrongMaiViewer from "./pages/public/view3d/HonTrongMaiViewer";
 import ThapButViewer from "./pages/public/view3d/ThapButViewer";
 import ThapRuaViewer from "./pages/public/view3d/ThapRuaViewer";
+import Collection from "./pages/public/collection/Collection";
 
 // Protected Route for Admin
 function AdminRoute({ children }) {
@@ -160,6 +161,7 @@ function AppContent() {
                     path="/3d-viewer-thap-rua"
                     element={<ThapRuaViewer />}
                   />
+                  <Route path="/collection" element={<Collection />} />
                 </Routes>
               </Layout>
             }

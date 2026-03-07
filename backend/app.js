@@ -5,6 +5,7 @@ const cors = require("cors");
 app.use(
   cors({
     origin: [
+      "http://localhost:8080/api/v1",
       "https://viettich.store",
       "https://www.viettich.store",
       "https://bamboshop.azurewebsites.net",
