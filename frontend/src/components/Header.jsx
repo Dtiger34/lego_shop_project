@@ -57,14 +57,14 @@ export default function Header() {
     <header className="site-header">
       <nav className="header-inner">
         {/* Logo */}
-        <Link to="/" className="brand">
+        <a href="/#banner" className="brand">
           <img
             src="/logo_viettich.jpg"
             alt="Việt Tích Logo"
             className="brand-logo"
           />
           <span className="brand-name">Việt Tích</span>
-        </Link>
+        </a>
 
         {/* Navigation links - Desktop */}
         <div className="nav nav-desktop">

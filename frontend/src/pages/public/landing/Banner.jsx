@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Banner() {
   return (
-    <section className="banner-section">
+    <section className="banner-section" id="banner">
       <div className="banner-overlay"></div>
       <div className="banner-content">
         <h2 className="banner-title">Về chúng tôi</h2>

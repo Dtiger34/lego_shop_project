@@ -13,6 +13,15 @@ import Regist from "./pages/public/auth/Regist";
 import Forgot from "./pages/public/auth/Forgot";
 import Dashboard from "./pages/admin/Dashboard";
 import ThreeDViewer from "./pages/public/ThreeDViewer";
+import CotCoViewer from "./pages/public/CotCoViewer";
+import LangBacViewer from "./pages/public/LangBacViewer";
+import KhueVanCacViewer from "./pages/public/view3d/KhueVanCacViewer";
+import NgoMonHueViewer from "./pages/public/view3d/NgoMonHueViewer";
+import DenNgocSonViewer from "./pages/public/view3d/DenNgocSonViewer";
+import CauTheHucViewer from "./pages/public/view3d/CauTheHucViewer";
+import HonTrongMaiViewer from "./pages/public/view3d/HonTrongMaiViewer";
+import ThapButViewer from "./pages/public/view3d/ThapButViewer";
+import ThapRuaViewer from "./pages/public/view3d/ThapRuaViewer";
 
 // Protected Route for Admin
 function AdminRoute({ children }) {
@@ -98,7 +107,43 @@ function AppContent() {
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<Regist />} />
                   <Route path="/forgot-password" element={<Forgot />} />
-                  <Route path="/3d-viewer" element={<ThreeDViewer />} />
+                  <Route
+                    path="/3d-viewer/chua-mot-cot"
+                    element={<ThreeDViewer />}
+                  />
+                  <Route path="/3d-viewer-cot-co" element={<CotCoViewer />} />
+                  <Route
+                    path="/3d-viewer-lang-bac"
+                    element={<LangBacViewer />}
+                  />
+                  <Route
+                    path="/3d-viewer-khue-van-cac"
+                    element={<KhueVanCacViewer />}
+                  />
+                  <Route
+                    path="/3d-viewer-ngo-mon"
+                    element={<NgoMonHueViewer />}
+                  />
+                  <Route
+                    path="/3d-viewer-den-ngoc-son"
+                    element={<DenNgocSonViewer />}
+                  />
+                  <Route
+                    path="/3d-viewer-cau-the-huc"
+                    element={<CauTheHucViewer />}
+                  />
+                  <Route
+                    path="/3d-viewer-hon-trong-mai"
+                    element={<HonTrongMaiViewer />}
+                  />
+                  <Route
+                    path="/3d-viewer-thap-but"
+                    element={<ThapButViewer />}
+                  />
+                  <Route
+                    path="/3d-viewer-thap-rua"
+                    element={<ThapRuaViewer />}
+                  />
                 </Routes>
               </Layout>
             }
