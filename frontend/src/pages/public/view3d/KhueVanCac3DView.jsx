@@ -142,13 +142,7 @@ const KhueVanCac3DView = () => {
 
           animate();
         },
-        (progress) => {
-          // Loading progress
-          const percentComplete = Math.round(
-            (progress.loaded / progress.total) * 100,
-          );
-          console.log(`Loading... ${percentComplete}%`);
-        },
+        undefined,
         (error) => {
           console.error("Error loading model:", error);
           setIsLoading(false);

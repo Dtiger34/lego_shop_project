@@ -142,12 +142,7 @@ const ThapBut3DView = () => {
 
           animate();
         },
-        (progress) => {
-          // Loading progress
-          console.log(
-            `Loading... ${((progress.loaded / progress.total) * 100).toFixed(2)}%`,
-          );
-        },
+        undefined,
         (err) => {
           console.error("Error loading model:", err);
           setIsLoading(false);
