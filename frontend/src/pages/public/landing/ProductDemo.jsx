@@ -15,8 +15,7 @@ export default function ProductDemo() {
       name: "Chùa Một Cột",
       description:
         "Ngôi chùa nổi tiếng với kiến trúc độc đáo - biểu tượng văn hóa Hà Nội, xây dựng thế kỷ XI",
-      image: "/chuamotcot.jpg",
-      price: 1250000,
+      image: "/chua_1_cot_demo.jpg",
       badge: "Lịch sử",
       route: "/3d-viewer/chua-mot-cot",
     },
@@ -25,8 +24,7 @@ export default function ProductDemo() {
       name: "Cột Cờ Hà Nội",
       description:
         "Biểu tượng của thủ đô với lịch sử anh hùng, nơi lá cờ tổ quốc được kéo lên lần đầu tiên",
-      image: "/cotcohanoi.jpg",
-      price: 980000,
+      image: "/cot_co_ha_noi_demo.jpg",
       badge: "Biểu tượng",
       route: "/3d-viewer-cot-co",
     },
@@ -35,8 +33,7 @@ export default function ProductDemo() {
       name: "Lăng chủ tịch Hồ Chí Minh",
       description:
         "Lăng chủ tịch Hồ Chí Minh, di tích lịch sử đặc biệt quan trọng của cả nước",
-      image: "/lang-bac.jpg",
-      price: 3200000,
+      image: "/lang_bac_demo.jpg",
       badge: "Di tích",
       route: "/3d-viewer-lang-bac",
     },
@@ -45,8 +42,7 @@ export default function ProductDemo() {
       name: "Đền Ngọc Sơn",
       description:
         "Đền thờ trên đảo nhỏ giữa Hồ Gươm, nơi yên tĩnh của Hà Nội xưa với kiến trúc thanh thoát",
-      image: "/den-ngoc-son.jpg",
-      price: 2650000,
+      image: "/den_ngoc_son_demo.jpg",
       badge: "Linh thiêng",
       route: "/3d-viewer-den-ngoc-son",
     },
@@ -55,8 +51,7 @@ export default function ProductDemo() {
       name: "Cầu Thê Húc",
       description:
         "Cầu gỗ cổ kính giữa Hồ Gươm với kiến trúc cong thanh nhã, nối liền Đền Ngọc Sơn",
-      image: "/cau-the-huc.jpg",
-      price: 1580000,
+      image: "/cau_the_huc_demo.jpg",
       badge: "Kiến trúc",
       route: "/3d-viewer-cau-the-huc",
     },
@@ -65,16 +60,11 @@ export default function ProductDemo() {
       name: "Khuê Văn Các",
       description:
         "Cổng vinh quang của Văn Miếu Quốc Tử Giám, biểu tượng của văn hóa học vấn truyền thống",
-      image: "/khue-van-cac.jpg",
-      price: 1420000,
+      image: "/khue_van_cac_demo.jpg",
       badge: "Văn hóa",
       route: "/3d-viewer-khue-van-cac",
     },
   ];
-
-  const formatPrice = (price) => {
-    return price.toLocaleString("vi-VN") + " VNĐ";
-  };
 
   return (
     <section className="product-demo" id="products">
@@ -101,8 +91,6 @@ export default function ProductDemo() {
 
               <h3 className="product-title">{product.name}</h3>
               <p className="product-description">{product.description}</p>
-
-              <div className="product-price">{formatPrice(product.price)}</div>
 
               <button
                 className="product-btn"

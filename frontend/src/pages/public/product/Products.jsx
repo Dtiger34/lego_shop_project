@@ -1,15 +1,12 @@
 import { useState, useEffect } from "react";
 import { useCart } from "../../../context/CartContext";
 import { getAllProducts } from "../../../service/productAPI";
-import { getAllCategories } from "../../../service/categoryAPI";
-import { API_BASE_URL } from "../../../service/config";
+import { BASE_URL } from "../../../service/config";
 import "./Products.css";
 
 export default function Products() {
-  const [selectedCategory, setSelectedCategory] = useState("all");
   const [sortBy, setSortBy] = useState("default");
   const [searchQuery, setSearchQuery] = useState("");
-  const [categories, setCategories] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -24,18 +21,10 @@ export default function Products() {
       setLoading(true);
       setError("");
 
-      const categoriesData = await getAllCategories();
-      const formattedCategories = [
-        { _id: "all", name: "Tất cả sản phẩm" },
-        ...(Array.isArray(categoriesData) ? categoriesData : []),
-      ];
-      setCategories(formattedCategories);
-
       const productsData = await getAllProducts();
       setAllProducts(Array.isArray(productsData.data) ? productsData.data : []);
     } catch (err) {
       setError("Lỗi khi tải dữ liệu: " + err.message);
-      setCategories([{ _id: "all", name: "Tất cả sản phẩm" }]);
       setAllProducts([]);
     } finally {
       setLoading(false);
@@ -44,10 +33,6 @@ export default function Products() {
 
   const getFilteredProducts = () => {
     let filtered = [...allProducts];
-
-    if (selectedCategory !== "all") {
-      filtered = filtered.filter((p) => p.category?._id === selectedCategory);
-    }
 
     if (searchQuery) {
       filtered = filtered.filter(
@@ -146,18 +131,6 @@ export default function Products() {
               </div>
             </div>
 
-            <div className="category-filters">
-              {categories.map((category) => (
-                <button
-                  key={category._id}
-                  onClick={() => setSelectedCategory(category._id)}
-                  className={`category-btn ${selectedCategory === category._id ? "active" : ""}`}
-                >
-                  {category.name}
-                </button>
-              ))}
-            </div>
-
             <div className="results-info">
               <p>Hiển thị {filteredProducts.length} sản phẩm</p>
             </div>
@@ -174,7 +147,7 @@ export default function Products() {
 
                     <div className="product-image-page">
                       <img
-                        src={`${API_BASE_URL.replace("/api/v1", "")}${product.images[0]}`}
+                        src={`${BASE_URL}${product.images[0]}`}
                         alt={product.name}
                         className="product-img"
                         onError={(e) => {

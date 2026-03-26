@@ -7,3 +7,8 @@ const isLocalhost =
 export const API_BASE_URL = isLocalhost
   ? "http://localhost:8080/api/v1"
   : "https://viettich.store/api/v1";
+
+// Base URL for static files (uploads)
+export const BASE_URL = isLocalhost
+  ? "http://localhost:8080"
+  : "https://viettich.store";

@@ -15,6 +15,7 @@ app.use(
 );
 // middleware
 app.use(express.json());
+app.use("/upload", express.static(path.join(__dirname, "upload")));
 
 // routes
 const route = require("./routes/route");

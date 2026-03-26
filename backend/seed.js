@@ -90,7 +90,7 @@ const seedDB = async () => {
         price: 1250000,
         description:
           "Tái hiện Khuê Văn Các – cổng vinh quang của Văn Miếu Quốc Tử Giám với kiến trúc gỗ tinh xảo thế kỷ XV. 520 mảnh ghép cao cấp, kèm sách hướng dẫn lắp ráp song ngữ. Phù hợp từ 10 tuổi.",
-        images: ["/khue-van-cac.jpg"],
+        images: ["/uploads/khue-van-cac.jpg"],
         category: categories[0]._id,
         stock: 30,
         sold: 48,
@@ -103,7 +103,7 @@ const seedDB = async () => {
         price: 980000,
         description:
           "Cột Cờ Hà Nội – công trình kiến trúc quân sự nổi tiếng được xây từ năm 1812. 380 mảnh ghép chi tiết, bao gồm cột cờ cao 41 mét thu nhỏ tỷ lệ 1:100. Phù hợp từ 8 tuổi.",
-        images: ["/cotcohanoi.jpg"],
+        images: ["/uploads/cot-co-ha-noi.jpg"],
         category: categories[0]._id,
         stock: 25,
         sold: 35,
@@ -116,7 +116,7 @@ const seedDB = async () => {
         price: 850000,
         description:
           "Tháp Rùa huyền thoại tọa lạc giữa Hồ Hoàn Kiếm – biểu tượng lâu đời nhất của Hà Nội. 310 mảnh ghép, cao 18 cm sau khi lắp. Phù hợp từ 8 tuổi.",
-        images: ["/thap-rua.jpg"],
+        images: ["/uploads/thap-rua.jpg"],
         category: categories[0]._id,
         stock: 40,
         sold: 62,
@@ -129,7 +129,7 @@ const seedDB = async () => {
         price: 750000,
         description:
           'Tháp Bút bên cạnh cầu Thê Húc – biểu tượng của chữ viết và tinh thần học vấn Việt Nam. 280 mảnh, kèm chi tiết nhỏ mô phỏng chữ khắc "Tả Thanh Thiên". Phù hợp từ 8 tuổi.',
-        images: ["/thap-but.jpg"],
+        images: ["/uploads/thap-but.jpg"],
         category: categories[0]._id,
         stock: 35,
         sold: 41,
@@ -142,7 +142,7 @@ const seedDB = async () => {
         price: 690000,
         description:
           "Cầu Thê Húc sơn đỏ nổi tiếng dẫn vào đền Ngọc Sơn trên Hồ Hoàn Kiếm. 245 mảnh, màu sắc truyền thống, cao 12 cm. Phù hợp từ 7 tuổi.",
-        images: ["/cau-the-huc.jpg"],
+        images: ["/uploads/cau-the-huc.jpg"],
         category: categories[0]._id,
         stock: 45,
         sold: 58,
@@ -155,7 +155,7 @@ const seedDB = async () => {
         price: 1100000,
         description:
           "Đền Ngọc Sơn tọa lạc trên đảo Ngọc giữa Hồ Hoàn Kiếm – kiệt tác kiến trúc tâm linh Hà Nội thế kỷ XIX. 460 mảnh ghép, bao gồm cầu Thê Húc thu nhỏ. Phù hợp từ 10 tuổi.",
-        images: ["/den-ngoc-son.jpg"],
+        images: ["/uploads/den-ngoc-son.jpg"],
         category: categories[0]._id,
         stock: 28,
         sold: 33,
@@ -168,7 +168,7 @@ const seedDB = async () => {
         price: 1450000,
         description:
           "Công trình lịch sử trang nghiêm tại Quảng trường Ba Đình – nơi yên nghỉ của Chủ tịch Hồ Chí Minh. 580 mảnh ghép, kiến trúc tỷ lệ 1:150, kèm quảng trường và cột cờ. Phù hợp từ 12 tuổi.",
-        images: ["/lang-bac.jpg"],
+        images: ["/uploads/lang-bac.jpg"],
         category: categories[1]._id,
         stock: 20,
         sold: 29,
@@ -182,7 +182,7 @@ const seedDB = async () => {
         price: 1650000,
         description:
           "Ngọ Môn – cổng chính uy nghi của Hoàng Thành Huế, nơi triều Nguyễn thực hiện nghi lễ quan trọng nhất. 680 mảnh, tỷ lệ 1:120, mô phỏng 5 lối đi và lầu Ngũ Phụng. Phù hợp từ 12 tuổi.",
-        images: ["/ngo-mon-hue.jpg"],
+        images: ["/uploads/ngo-mon-hue.jpg"],
         category: categories[1]._id,
         stock: 18,
         sold: 22,
@@ -196,7 +196,7 @@ const seedDB = async () => {
         price: 920000,
         description:
           "Chùa Một Cột – ngôi chùa độc đáo hình bông sen nở nằm trên một trụ đá giữa hồ nước. 350 mảnh ghép, thiết kế thu nhỏ tỷ lệ 1:80 kèm hồ sen. Phù hợp từ 9 tuổi.",
-        images: ["/chuamotcot.jpg"],
+        images: ["/uploads/chua-mot-cot.jpg"],
         category: categories[0]._id,
         stock: 32,
         sold: 44,
@@ -209,7 +209,7 @@ const seedDB = async () => {
         price: 890000,
         description:
           "Hòn Trống Mái – cặp đá tự nhiên huyền thoại trên Vịnh Hạ Long biểu trưng cho tình yêu vĩnh cửu. 330 mảnh, mô phỏng cảnh biển hùng vĩ với sóng và đảo đá. Phù hợp từ 9 tuổi.",
-        images: ["/hon-trong-mai.jpg"],
+        images: ["/uploads/hon-trong-mai.jpg"],
         category: categories[1]._id,
         stock: 22,
         sold: 27,
