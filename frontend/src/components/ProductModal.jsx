@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { BASE_URL } from '../service/config';
 import './ProductModal.css';
 
 export default function ProductModal({ show, product, onClose, onAddToCart }) {
@@ -61,7 +62,13 @@ export default function ProductModal({ show, product, onClose, onAddToCart }) {
         </button>
 
         <div className="modal-image">
-          <img src={product.icon} alt={product.name} />
+          <img 
+            src={product.images && product.images[0] ? `${BASE_URL}${product.images[0]}` : product.icon} 
+            alt={product.name}
+            onError={(e) => {
+              e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200"%3E%3Crect fill="%23ffe0e0" width="200" height="200"/%3E%3Ctext x="50%25" y="45%25" font-size="40" text-anchor="middle" dy=".3em"%3E%F0%9F%A7%B1%3C/text%3E%3Ctext x="50%25" y="70%25" font-size="13" fill="%23E3000B" text-anchor="middle"%3EH%C3%ACnh%20%E1%BA%A3nh%20kh%C3%B4ng%20t%C3%ACm%20th%C3%A1y%3C/text%3E%3C/svg%3E';
+            }}
+          />
         </div>
 
         <div className="modal-details">
