@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const app = express();
 const cors = require("cors");
 
@@ -15,7 +16,7 @@ app.use(
 );
 // middleware
 app.use(express.json());
-app.use("/upload", express.static(path.join(__dirname, "upload")));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // routes
 const route = require("./routes/route");
