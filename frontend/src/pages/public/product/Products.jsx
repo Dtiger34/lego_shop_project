@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useCart } from "../../../context/CartContext";
 import { getAllProducts } from "../../../service/productAPI";
 import { BASE_URL } from "../../../service/config";
@@ -11,6 +12,7 @@ export default function Products() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const { openModal } = useCart();
+  const navigate = useNavigate();
 
   useEffect(() => {
     loadData();
@@ -130,11 +132,7 @@ export default function Products() {
               </div>
             </div>
 
-            <div className="results-info">
-              <p>Hiển thị {filteredProducts.length} sản phẩm</p>
-            </div>
-
-            <div className="products-grid-page">
+<div className="products-grid-page">
               {filteredProducts.length > 0 ? (
                 filteredProducts.map((product) => (
                   <div key={product._id} className="product-card-page">
@@ -144,7 +142,11 @@ export default function Products() {
                       </span>
                     )}
 
-                    <div className="product-image-page">
+                    <div
+                      className="product-image-page"
+                      onClick={() => navigate(`/product/${product._id}`)}
+                      style={{ cursor: "pointer" }}
+                    >
                       <img
                         src={`${BASE_URL}${product.images[0]}`}
                         alt={product.name}
@@ -156,18 +158,14 @@ export default function Products() {
                       />
                     </div>
 
-                    <h3 className="product-name">{product.name}</h3>
+                    <h3
+                      className="product-name"
+                      onClick={() => navigate(`/product/${product._id}`)}
+                      style={{ cursor: "pointer" }}
+                    >{product.name}</h3>
                     <p className="product-desc">{product.description}</p>
 
-                    <div className="product-rating">
-                      <span className="stars">⭐</span>
-                      <span className="rating-value">{product.rating}</span>
-                      <span className="review-count">
-                        ({product.numReviews} đánh giá)
-                      </span>
-                    </div>
-
-                    <div className="product-price-page">
+<div className="product-price-page">
                       {formatPrice(product.price)}
                     </div>
 

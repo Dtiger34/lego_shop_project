@@ -22,6 +22,7 @@ import ShippingModal from "./components/ShippingModal";
 import { createOrder } from "./service/orderAPI";
 import Home from "./pages/Home";
 import Products from "./pages/public/product/Products";
+import ProductDetail from "./pages/public/product/ProductDetail";
 import Cart from "./pages/public/cart/Cart";
 import Login from "./pages/public/auth/Login";
 import Regist from "./pages/public/auth/Regist";
@@ -122,6 +123,7 @@ function AppContent() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/products" element={<Products />} />
+                  <Route path="/product/:id" element={<ProductDetail />} />
                   <Route path="/cart" element={<Cart />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<Regist />} />
