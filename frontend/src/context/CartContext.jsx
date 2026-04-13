@@ -25,7 +25,9 @@ export function CartProvider({ children }) {
 
   const [toast, setToast] = useState({
     show: false,
-    product: null
+    product: null,
+    message: '',
+    type: 'success'
   });
 
   const [shippingModal, setShippingModal] = useState({
@@ -145,7 +147,16 @@ export function CartProvider({ children }) {
   };
 
   const closeToast = () => {
-    setToast({ show: false, product: null });
+    setToast({ show: false, product: null, message: '', type: 'success' });
+  };
+
+  const showToast = (message, type = 'success', product = null) => {
+    setToast({
+      show: true,
+      message,
+      type,
+      product
+    });
   };
 
   const openModal = (product) => {
@@ -175,6 +186,7 @@ export function CartProvider({ children }) {
     getTotalPrice,
     toast,
     closeToast,
+    showToast,
     modal,
     openModal,
     closeModal,

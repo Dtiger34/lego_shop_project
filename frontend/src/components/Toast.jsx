@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import './Toast.css';
 
-export default function Toast({ show, message, product, onClose }) {
+export default function Toast({ show, message, product, type = 'success', onClose }) {
   useEffect(() => {
     if (show) {
       const timer = setTimeout(() => {
@@ -13,10 +13,23 @@ export default function Toast({ show, message, product, onClose }) {
 
   if (!show) return null;
 
+  const getIcon = () => {
+    switch (type) {
+      case 'success':
+        return '✓';
+      case 'error':
+        return '✕';
+      case 'info':
+        return 'ℹ';
+      default:
+        return '✓';
+    }
+  };
+
   return (
     <div className="toast-container">
-      <div className="toast">
-        <div className="toast-icon">✓</div>
+      <div className={`toast toast-${type}`}>
+        <div className="toast-icon">{getIcon()}</div>
         <div className="toast-content">
           <div className="toast-title">{message}</div>
           {product && (

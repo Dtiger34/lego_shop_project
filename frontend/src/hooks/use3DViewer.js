@@ -82,34 +82,56 @@ const use3DViewer = (glbPath, { highQuality = false } = {}) => {
           let autoRotate = true;
           const autoRotationSpeed = 0.002;
 
-          // Mouse drag
+          // Mouse and Touch drag
           let isDragging = false;
           let previousMousePosition = { x: 0, y: 0 };
 
-          renderer.domElement.addEventListener("mousedown", (e) => {
+          const handleDragStart = (x, y) => {
             isDragging = true;
             autoRotate = false;
-            previousMousePosition = { x: e.clientX, y: e.clientY };
+            previousMousePosition = { x, y };
+          };
+
+          const handleDragMove = (x, y) => {
+            if (!isDragging) return;
+            const deltaX = x - previousMousePosition.x;
+            const deltaY = y - previousMousePosition.y;
+            model.rotation.y += deltaX * 0.01;
+            model.rotation.x += deltaY * 0.01;
+            previousMousePosition = { x, y };
+          };
+
+          const handleDragEnd = () => {
+            isDragging = false;
+            autoRotate = true;
+          };
+
+          // Mouse events
+          renderer.domElement.addEventListener("mousedown", (e) => {
+            handleDragStart(e.clientX, e.clientY);
           });
 
           renderer.domElement.addEventListener("mousemove", (e) => {
-            if (!isDragging) return;
-            const deltaX = e.clientX - previousMousePosition.x;
-            const deltaY = e.clientY - previousMousePosition.y;
-            model.rotation.y += deltaX * 0.01;
-            model.rotation.x += deltaY * 0.01;
-            previousMousePosition = { x: e.clientX, y: e.clientY };
+            handleDragMove(e.clientX, e.clientY);
           });
 
-          renderer.domElement.addEventListener("mouseup", () => {
-            isDragging = false;
-            autoRotate = true;
+          renderer.domElement.addEventListener("mouseup", handleDragEnd);
+          renderer.domElement.addEventListener("mouseleave", handleDragEnd);
+
+          // Touch events
+          renderer.domElement.addEventListener("touchstart", (e) => {
+            if (e.touches.length > 0) {
+              handleDragStart(e.touches[0].clientX, e.touches[0].clientY);
+            }
           });
 
-          renderer.domElement.addEventListener("mouseleave", () => {
-            isDragging = false;
-            autoRotate = true;
+          renderer.domElement.addEventListener("touchmove", (e) => {
+            if (e.touches.length > 0) {
+              handleDragMove(e.touches[0].clientX, e.touches[0].clientY);
+            }
           });
+
+          renderer.domElement.addEventListener("touchend", handleDragEnd);
 
           // Wheel zoom
           renderer.domElement.addEventListener("wheel", (e) => {

@@ -76,7 +76,7 @@ export default function Header() {
           <a href="/#features">Giới thiệu</a>
           <Link to="/products">Sản phẩm</Link>
           <Link to="/collection">Bộ sưu tập</Link>
-          <a href="/#contact">Liên hệ</a>
+          <Link to="/contact">Liên hệ</Link>
           {isAdmin && <Link to="/admin/dashboard">Quản trị</Link>}
         </div>
 
@@ -124,9 +124,9 @@ export default function Header() {
           <Link to="/collection" onClick={handleNavClick}>
             Bộ sưu tập
           </Link>
-          <a href="/#contact" onClick={handleNavClick}>
+          <Link to="/contact" onClick={handleNavClick}>
             Liên hệ
-          </a>
+          </Link>
           {isAdmin && (
             <Link to="/admin/dashboard" onClick={handleNavClick}>
               Quản trị

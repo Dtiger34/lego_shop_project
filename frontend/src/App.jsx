@@ -38,6 +38,7 @@ import HonTrongMaiViewer from "./pages/public/view3d/HonTrongMaiViewer";
 import ThapButViewer from "./pages/public/view3d/ThapButViewer";
 import ThapRuaViewer from "./pages/public/view3d/ThapRuaViewer";
 import Collection from "./pages/public/collection/Collection";
+import Contact from "./pages/Contact";
 
 // Protected Route for Admin
 function AdminRoute({ children }) {
@@ -55,6 +56,7 @@ function AppContent() {
   const {
     toast,
     closeToast,
+    showToast,
     modal,
     closeModal,
     addToCart,
@@ -91,9 +93,9 @@ function AppContent() {
       clearCart();
       closeShippingModal();
 
-      alert("Đơn hàng tạo thành công! Mã đơn hàng: " + response._id);
+      showToast("Đơn hàng tạo thành công!", "success");
     } catch (error) {
-      alert("Lỗi khi tạo đơn hàng: " + error.message);
+      showToast("Lỗi khi tạo đơn hàng: " + error.message, "error");
     }
   };
 
@@ -162,6 +164,7 @@ function AppContent() {
                     element={<ThapRuaViewer />}
                   />
                   <Route path="/collection" element={<Collection />} />
+                  <Route path="/contact" element={<Contact />} />
                 </Routes>
               </Layout>
             }
@@ -176,8 +179,9 @@ function AppContent() {
       />
       <Toast
         show={toast.show}
-        message="Đã thêm vào giỏ hàng!"
+        message={toast.message || "Đã thêm vào giỏ hàng!"}
         product={toast.product}
+        type={toast.type}
         onClose={closeToast}
       />
       <ShippingModal

@@ -1,31 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
+import { useCart } from "../../../context/CartContext";
 
 export default function ContactForm() {
+  const { showToast } = useCart();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
-  })
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('Form submitted:', formData)
-    alert('Cảm ơn bạn đã liên hệ! Đội ngũ Việt Tích sẽ phản hồi sớm nhất.')
-    setFormData({ name: '', email: '', phone: '', message: '' })
-  }
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    showToast("Cảm ơn bạn đã liên hệ! Đội ngũ Việt Tích sẽ phản hồi sớm nhất.", "success");
+    setFormData({ name: "", email: "", phone: "", message: "" });
+  };
 
   return (
     <section className="contact-form" id="contact">
       <div className="section-container">
-        <div className="section-header">
-          <h2 className="section-title">Kết Nối Với Chúng Tôi</h2>
-          <p className="section-title">Chúng tôi luôn sẵn sàng lắng nghe và tư vấn tận tâm cho quý khách hàng</p>
-        </div>
+        <div className="section-header"></div>
         <form onSubmit={handleSubmit} className="form-wrapper">
           <div className="form-row">
             <div className="form-group">
@@ -82,5 +81,5 @@ export default function ContactForm() {
         </form>
       </div>
     </section>
-  )
+  );
 }

@@ -80,10 +80,13 @@
   color: white;
   text-decoration: none;
   transition: all 0.3s;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
 .social-link:hover {
-  background: #2c3e50;
+  background: #d4a843;
+  color: #1e2a3a;
   transform: scale(1.1);
 }
 

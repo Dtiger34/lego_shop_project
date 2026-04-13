@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { getAllOrders, updateOrderStatus, getAllProducts, getAllUsers } from '../../service/adminAPI';
+import { useCart } from '../../context/CartContext';
 import './admin.css';
 
 function Dashboard() {
+  const { showToast } = useCart();
   const [activeSection, setActiveSection] = useState('statistics');
   const [orders, setOrders] = useState([]);
   const [products, setProducts] = useState([]);
@@ -80,9 +82,9 @@ function Dashboard() {
       // Reload orders to reflect changes
       const ordersData = await getAllOrders();
       setOrders(ordersData);
-      alert('Cập nhật trạng thái đơn hàng thành công!');
+      showToast('Cập nhật trạng thái đơn hàng thành công!', 'success');
     } catch (err) {
-      alert('Lỗi: ' + (err.message || 'Không thể cập nhật trạng thái'));
+      showToast('Lỗi: ' + (err.message || 'Không thể cập nhật trạng thái'), 'error');
     }
   };
 
