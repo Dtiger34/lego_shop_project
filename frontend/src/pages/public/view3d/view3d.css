@@ -139,6 +139,11 @@
   width: 100%;
   height: 100%;
   display: block;
+  touch-action: none;
+}
+
+.view3d-canvas canvas {
+  touch-action: none;
 }
 
 .viewer-footer {
@@ -339,8 +344,12 @@
   }
 
   .viewer-frame {
-    height: 400px;
+    height: 350px;
     border-width: 2px;
+  }
+
+  .view3d-main {
+    touch-action: none;
   }
 
   .viewer-label,

@@ -275,7 +275,7 @@
 
   .pd-main {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
     padding: 1.5rem;
   }
 
@@ -285,5 +285,51 @@
 
   .pd-price {
     font-size: 1.6rem;
+  }
+
+  .pd-thumb {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pd-page {
+    padding: 1rem 0.75rem;
+  }
+
+  .pd-main {
+    padding: 1.25rem;
+    gap: 1.25rem;
+  }
+
+  .pd-breadcrumb {
+    font-size: 0.8rem;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+  }
+
+  .pd-name {
+    font-size: 1.2rem;
+  }
+
+  .pd-price {
+    font-size: 1.4rem;
+  }
+
+  .pd-thumb {
+    width: 48px;
+    height: 48px;
+  }
+
+  .pd-qty-controls button {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .pd-btn-cart,
+  .pd-btn-back {
+    padding: 0.875rem;
+    font-size: 0.95rem;
   }
 }

@@ -84,138 +84,57 @@ const seedDB = async () => {
 
     // ===== PRODUCTS =====
     const products = await Product.insertMany([
-      // Hà Nội
       {
-        name: "Bộ Xếp Hình Khuê Văn Các - Văn Miếu Quốc Tử Giám",
-        price: 1250000,
+        name: "Little Hanoi",
+        price: 250000,
         description:
-          "Tái hiện Khuê Văn Các – cổng vinh quang của Văn Miếu Quốc Tử Giám với kiến trúc gỗ tinh xảo thế kỷ XV. 520 mảnh ghép cao cấp, kèm sách hướng dẫn lắp ráp song ngữ. Phù hợp từ 10 tuổi.",
+          "Bộ xếp hình thu nhỏ phố cổ Hà Nội – nơi lưu giữ hồn văn hóa ngàn năm của Thủ đô. 180 mảnh ghép, tái hiện những căn nhà ống đặc trưng và không gian phố cổ yên bình. Phù hợp từ 6 tuổi.",
         images: ["/uploads/khue_van_cac.jpg"],
         category: categories[0]._id,
-        stock: 30,
-        sold: 48,
-        rating: 4.9,
-        numReviews: 21,
+        stock: 50,
+        sold: 32,
+        rating: 4.7,
+        numReviews: 18,
         viewerUrl: "/3d-viewer-khue-van-cac",
       },
       {
-        name: "Bộ Xếp Hình Cột Cờ Hà Nội - Biểu Tượng Thủ Đô",
-        price: 980000,
+        name: "Hoan Kiem Lake",
+        price: 700000,
         description:
-          "Cột Cờ Hà Nội – công trình kiến trúc quân sự nổi tiếng được xây từ năm 1812. 380 mảnh ghép chi tiết, bao gồm cột cờ cao 41 mét thu nhỏ tỷ lệ 1:100. Phù hợp từ 8 tuổi.",
-        images: ["/uploads/cot_co_ha_noi.jpg"],
-        category: categories[0]._id,
-        stock: 25,
-        sold: 35,
-        rating: 4.7,
-        numReviews: 16,
-        viewerUrl: "/3d-viewer-cot-co",
-      },
-      {
-        name: "Bộ Xếp Hình Tháp Rùa - Biểu Tượng Hồ Gươm",
-        price: 850000,
-        description:
-          "Tháp Rùa huyền thoại tọa lạc giữa Hồ Hoàn Kiếm – biểu tượng lâu đời nhất của Hà Nội. 310 mảnh ghép, cao 18 cm sau khi lắp. Phù hợp từ 8 tuổi.",
+          "Tái hiện khung cảnh Hồ Hoàn Kiếm – trái tim của Hà Nội – với Tháp Rùa và cầu Thê Húc huyền thoại. 290 mảnh ghép cao cấp, mô phỏng mặt hồ xanh biếc và đảo Ngọc. Phù hợp từ 8 tuổi.",
         images: ["/uploads/thap_rua.jpg"],
         category: categories[0]._id,
-        stock: 40,
-        sold: 62,
+        stock: 35,
+        sold: 54,
         rating: 4.8,
-        numReviews: 28,
+        numReviews: 24,
         viewerUrl: "/3d-viewer-thap-rua",
       },
       {
-        name: "Bộ Xếp Hình Tháp Bút - Di Tích Văn Hóa Hồ Gươm",
-        price: 750000,
+        name: "Ha Long Bay",
+        price: 350000,
         description:
-          'Tháp Bút bên cạnh cầu Thê Húc – biểu tượng của chữ viết và tinh thần học vấn Việt Nam. 280 mảnh, kèm chi tiết nhỏ mô phỏng chữ khắc "Tả Thanh Thiên". Phù hợp từ 8 tuổi.',
-        images: ["/uploads/thap_but.jpg"],
-        category: categories[0]._id,
-        stock: 35,
-        sold: 41,
-        rating: 4.6,
-        numReviews: 14,
-        viewerUrl: "/3d-viewer-thap-but",
-      },
-      {
-        name: "Bộ Xếp Hình Cầu Thê Húc - Cầu Cổ Giữa Hồ Gươm",
-        price: 690000,
-        description:
-          "Cầu Thê Húc sơn đỏ nổi tiếng dẫn vào đền Ngọc Sơn trên Hồ Hoàn Kiếm. 245 mảnh, màu sắc truyền thống, cao 12 cm. Phù hợp từ 7 tuổi.",
-        images: ["/uploads/cau_the_huc.jpg"],
-        category: categories[0]._id,
-        stock: 45,
-        sold: 58,
-        rating: 4.7,
-        numReviews: 23,
-        viewerUrl: "/3d-viewer-cau-the-huc",
-      },
-      {
-        name: "Bộ Xếp Hình Đền Ngọc Sơn - Đền Thờ Giữa Hồ Gươm",
-        price: 1100000,
-        description:
-          "Đền Ngọc Sơn tọa lạc trên đảo Ngọc giữa Hồ Hoàn Kiếm – kiệt tác kiến trúc tâm linh Hà Nội thế kỷ XIX. 460 mảnh ghép, bao gồm cầu Thê Húc thu nhỏ. Phù hợp từ 10 tuổi.",
-        images: ["/uploads/den_ngoc_son.jpg"],
-        category: categories[0]._id,
-        stock: 28,
-        sold: 33,
-        rating: 4.8,
-        numReviews: 17,
-        viewerUrl: "/3d-viewer-den-ngoc-son",
-      },
-      {
-        name: "Bộ Xếp Hình Lăng Chủ Tịch Hồ Chí Minh",
-        price: 1450000,
-        description:
-          "Công trình lịch sử trang nghiêm tại Quảng trường Ba Đình – nơi yên nghỉ của Chủ tịch Hồ Chí Minh. 580 mảnh ghép, kiến trúc tỷ lệ 1:150, kèm quảng trường và cột cờ. Phù hợp từ 12 tuổi.",
-        images: ["/uploads/lang_bac.jpg"],
-        category: categories[1]._id,
-        stock: 20,
-        sold: 29,
-        rating: 4.9,
-        numReviews: 19,
-        viewerUrl: "/3d-viewer-lang-bac",
-      },
-      // Miền Trung
-      {
-        name: "Bộ Xếp Hình Ngọ Môn Huế - Cổng Chính Hoàng Thành",
-        price: 1650000,
-        description:
-          "Ngọ Môn – cổng chính uy nghi của Hoàng Thành Huế, nơi triều Nguyễn thực hiện nghi lễ quan trọng nhất. 680 mảnh, tỷ lệ 1:120, mô phỏng 5 lối đi và lầu Ngũ Phụng. Phù hợp từ 12 tuổi.",
-        images: ["/uploads/ngo_mon_hue.jpg"],
-        category: categories[1]._id,
-        stock: 18,
-        sold: 22,
-        rating: 4.8,
-        numReviews: 13,
-        viewerUrl: "/3d-viewer-ngo-mon",
-      },
-      // Miền Nam
-      {
-        name: "Bộ Xếp Hình Chùa Một Cột - Kiệt Tác Kiến Trúc",
-        price: 920000,
-        description:
-          "Chùa Một Cột – ngôi chùa độc đáo hình bông sen nở nằm trên một trụ đá giữa hồ nước. 350 mảnh ghép, thiết kế thu nhỏ tỷ lệ 1:80 kèm hồ sen. Phù hợp từ 9 tuổi.",
-        images: ["/uploads/chua_1_cot.jpg"],
-        category: categories[0]._id,
-        stock: 32,
-        sold: 44,
-        rating: 4.7,
-        numReviews: 20,
-        viewerUrl: "/3d-viewer/chua-mot-cot",
-      },
-      {
-        name: "Bộ Xếp Hình Hòn Trống Mái - Kỳ Quan Vịnh Bắc Bộ",
-        price: 890000,
-        description:
-          "Hòn Trống Mái – cặp đá tự nhiên huyền thoại trên Vịnh Hạ Long biểu trưng cho tình yêu vĩnh cửu. 330 mảnh, mô phỏng cảnh biển hùng vĩ với sóng và đảo đá. Phù hợp từ 9 tuổi.",
+          "Kỳ quan thiên nhiên thế giới Vịnh Hạ Long với những đảo đá vôi sừng sững giữa biển khơi. 210 mảnh ghép, mô phỏng cảnh đảo đá hùng vĩ và mặt biển xanh ngọc. Phù hợp từ 7 tuổi.",
         images: ["/uploads/hon_trong_mai.jpg"],
         category: categories[1]._id,
-        stock: 22,
-        sold: 27,
+        stock: 45,
+        sold: 38,
         rating: 4.6,
-        numReviews: 12,
+        numReviews: 15,
         viewerUrl: "/3d-viewer-hon-trong-mai",
+      },
+      {
+        name: "Ngo Mon Gate",
+        price: 600000,
+        description:
+          "Ngọ Môn – cổng chính uy nghi của Hoàng Thành Huế, biểu tượng quyền lực của triều Nguyễn. 260 mảnh ghép, tỷ lệ 1:150, mô phỏng lầu Ngũ Phụng và 5 lối đi truyền thống. Phù hợp từ 9 tuổi.",
+        images: ["/uploads/ngo_mon_hue.jpg"],
+        category: categories[1]._id,
+        stock: 30,
+        sold: 27,
+        rating: 4.8,
+        numReviews: 14,
+        viewerUrl: "/3d-viewer-ngo-mon",
       },
     ]);
     console.log("✓ Sản phẩm đã được thêm:", products.length);
@@ -226,43 +145,37 @@ const seedDB = async () => {
         user: users[1]._id,
         product: products[0]._id,
         rating: 5,
-        comment:
-          "Bộ Khuê Văn Các rất tuyệt! Mảnh ghép chắc chắn, kiến trúc đẹp và chi tiết. Con tôi mê lắm!",
+        comment: "Little Hanoi rất đáng yêu! Con tôi mê lắm, lắp xong trưng bày rất đẹp.",
       },
       {
         user: users[2]._id,
-        product: products[0]._id,
+        product: products[1]._id,
         rating: 5,
-        comment:
-          "Chất lượng xuất sắc, sách hướng dẫn rõ ràng. Lắp xong trưng bày rất đẹp.",
+        comment: "Hoan Kiem Lake quá đẹp! Tháp Rùa và cầu Thê Húc được làm rất chi tiết.",
       },
       {
         user: users[3]._id,
-        product: products[2]._id,
-        rating: 5,
-        comment:
-          "Tháp Rùa mini siêu dễ thương! Đặt trên bàn làm việc nhìn rất ý nghĩa.",
+        product: products[1]._id,
+        rating: 4,
+        comment: "Chất lượng tốt, mảnh ghép chắc chắn. Giá cả hợp lý.",
       },
       {
         user: users[1]._id,
-        product: products[6]._id,
+        product: products[2]._id,
         rating: 5,
-        comment:
-          "Bộ Lăng Bác trang trọng và chi tiết. Quảng trường thu nhỏ rất ấn tượng.",
+        comment: "Ha Long Bay miniature siêu đẹp! Cảm giác như đang đứng giữa vịnh vậy.",
       },
       {
         user: users[2]._id,
-        product: products[8]._id,
-        rating: 4,
-        comment:
-          "Chùa Một Cột giá tốt mà chất lượng cao. Hồ sen kèm theo rất thú vị!",
+        product: products[3]._id,
+        rating: 5,
+        comment: "Ngo Mon Gate rất hoành tráng, xứng đáng với giá tiền. Lắp khá thú vị!",
       },
       {
         user: users[3]._id,
-        product: products[7]._id,
-        rating: 5,
-        comment:
-          "Ngọ Môn Huế hoành tráng! Lầu Ngũ Phụng được mô phỏng rất chuẩn. Xứng đáng với giá tiền.",
+        product: products[3]._id,
+        rating: 4,
+        comment: "Sản phẩm đẹp, đóng gói cẩn thận. Sẽ mua thêm cho bộ sưu tập.",
       },
     ]);
     console.log("✓ Đánh giá đã được thêm:", reviews.length);
@@ -273,12 +186,12 @@ const seedDB = async () => {
         user: users[1]._id,
         items: [
           { product: products[0]._id, quantity: 1 },
-          { product: products[2]._id, quantity: 1 },
+          { product: products[1]._id, quantity: 1 },
         ],
       },
       {
         user: users[2]._id,
-        items: [{ product: products[6]._id, quantity: 1 }],
+        items: [{ product: products[3]._id, quantity: 1 }],
       },
     ]);
     console.log("✓ Giỏ hàng đã được thêm:", carts.length);
@@ -292,16 +205,10 @@ const seedDB = async () => {
             product: products[0]._id,
             name: products[0].name,
             price: products[0].price,
-            quantity: 1,
-          },
-          {
-            product: products[2]._id,
-            name: products[2].name,
-            price: products[2].price,
-            quantity: 1,
+            quantity: 2,
           },
         ],
-        totalPrice: products[0].price + products[2].price,
+        totalPrice: products[0].price * 2,
         shippingAddress: {
           fullName: "Nguyễn Văn An",
           phone: "0912345678",
@@ -316,19 +223,19 @@ const seedDB = async () => {
         user: users[2]._id,
         items: [
           {
-            product: products[7]._id,
-            name: products[7].name,
-            price: products[7].price,
+            product: products[1]._id,
+            name: products[1].name,
+            price: products[1].price,
             quantity: 1,
           },
           {
-            product: products[8]._id,
-            name: products[8].name,
-            price: products[8].price,
+            product: products[2]._id,
+            name: products[2].name,
+            price: products[2].price,
             quantity: 1,
           },
         ],
-        totalPrice: products[7].price + products[8].price,
+        totalPrice: products[1].price + products[2].price,
         shippingAddress: {
           fullName: "Trần Thị Bình",
           phone: "0987654321",
@@ -343,13 +250,13 @@ const seedDB = async () => {
         user: users[3]._id,
         items: [
           {
-            product: products[6]._id,
-            name: products[6].name,
-            price: products[6].price,
+            product: products[3]._id,
+            name: products[3].name,
+            price: products[3].price,
             quantity: 1,
           },
         ],
-        totalPrice: products[6].price,
+        totalPrice: products[3].price,
         shippingAddress: {
           fullName: "Lê Hoàng Cường",
           phone: "0933333333",

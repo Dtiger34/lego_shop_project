@@ -37,6 +37,7 @@ const use3DViewer = (glbPath, { highQuality = false } = {}) => {
           : Math.min(window.devicePixelRatio, 1.5),
       );
       renderer.shadowMap.enabled = true;
+      renderer.domElement.style.touchAction = "none";
       container.appendChild(renderer.domElement);
 
       // Lighting
@@ -120,18 +121,23 @@ const use3DViewer = (glbPath, { highQuality = false } = {}) => {
 
           // Touch events
           renderer.domElement.addEventListener("touchstart", (e) => {
+            e.preventDefault();
             if (e.touches.length > 0) {
               handleDragStart(e.touches[0].clientX, e.touches[0].clientY);
             }
-          });
+          }, { passive: false });
 
           renderer.domElement.addEventListener("touchmove", (e) => {
+            e.preventDefault();
             if (e.touches.length > 0) {
               handleDragMove(e.touches[0].clientX, e.touches[0].clientY);
             }
-          });
+          }, { passive: false });
 
-          renderer.domElement.addEventListener("touchend", handleDragEnd);
+          renderer.domElement.addEventListener("touchend", (e) => {
+            e.preventDefault();
+            handleDragEnd();
+          }, { passive: false });
 
           // Wheel zoom
           renderer.domElement.addEventListener("wheel", (e) => {
