@@ -184,7 +184,7 @@ const use3DViewer = (glbPath, { highQuality = false } = {}) => {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsLoading(false);
     }
-  }, [glbPath]);
+  }, [glbPath, highQuality]);
 
   return { containerRef, isLoading, error };
 };

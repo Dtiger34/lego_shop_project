@@ -102,7 +102,6 @@ export default function Products() {
           <>
             <div className="products-controls">
               <div className="search-box">
-                <span className="search-icon">🔍</span>
                 <input
                   type="text"
                   placeholder="Tìm kiếm sản phẩm..."
