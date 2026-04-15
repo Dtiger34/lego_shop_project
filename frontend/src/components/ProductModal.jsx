@@ -4,9 +4,11 @@ import './ProductModal.css';
 
 export default function ProductModal({ show, product, onClose, onAddToCart }) {
   const [quantity, setQuantity] = useState(1);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handleClose = useCallback(() => {
     setQuantity(1);
+    setCurrentImageIndex(0);
     onClose();
   }, [onClose]);
 
@@ -29,6 +31,19 @@ export default function ProductModal({ show, product, onClose, onAddToCart }) {
   }, [show, handleClose]);
 
   if (!show || !product) return null;
+
+  const images = product.images && product.images.length > 0 ? product.images : [];
+  const hasMultipleImages = images.length > 1;
+
+  const goToPrevImage = (e) => {
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const goToNextImage = (e) => {
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
 
   const handleQuantityChange = (change) => {
     const newQuantity = quantity + change;
@@ -62,13 +77,37 @@ export default function ProductModal({ show, product, onClose, onAddToCart }) {
         </button>
 
         <div className="modal-image">
-          <img 
-            src={product.images && product.images[0] ? `${BASE_URL}${product.images[0]}` : product.icon} 
-            alt={product.name}
+          <img
+            src={images[currentImageIndex] ? `${BASE_URL}${images[currentImageIndex]}` : product.icon}
+            alt={`${product.name} - ảnh ${currentImageIndex + 1}`}
             onError={(e) => {
               e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200"%3E%3Crect fill="%23ffe0e0" width="200" height="200"/%3E%3Ctext x="50%25" y="45%25" font-size="40" text-anchor="middle" dy=".3em"%3E%F0%9F%A7%B1%3C/text%3E%3Ctext x="50%25" y="70%25" font-size="13" fill="%23E3000B" text-anchor="middle"%3EH%C3%ACnh%20%E1%BA%A3nh%20kh%C3%B4ng%20t%C3%ACm%20th%C3%A1y%3C/text%3E%3C/svg%3E';
             }}
           />
+          {hasMultipleImages && (
+            <>
+              <button className="carousel-btn carousel-btn-prev" onClick={goToPrevImage} aria-label="Ảnh trước">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+              <button className="carousel-btn carousel-btn-next" onClick={goToNextImage} aria-label="Ảnh tiếp">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+              <div className="carousel-dots">
+                {images.map((_, idx) => (
+                  <button
+                    key={idx}
+                    className={`carousel-dot${idx === currentImageIndex ? ' active' : ''}`}
+                    onClick={(e) => { e.stopPropagation(); setCurrentImageIndex(idx); }}
+                    aria-label={`Xem ảnh ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
 
         <div className="modal-details">

@@ -89,7 +89,10 @@ const seedDB = async () => {
         price: 250000,
         description:
           "Bộ xếp hình thu nhỏ phố cổ Hà Nội – nơi lưu giữ hồn văn hóa ngàn năm của Thủ đô. 180 mảnh ghép, tái hiện những căn nhà ống đặc trưng và không gian phố cổ yên bình. Phù hợp từ 6 tuổi.",
-        images: ["/uploads/khue_van_cac.jpg"],
+        images: [
+          "/uploads/Little Ha Noi/IMG_7976.JPG",
+          "/uploads/Little Ha Noi/IMG_7987.JPG",
+        ],
         category: categories[0]._id,
         stock: 50,
         sold: 32,
@@ -102,7 +105,10 @@ const seedDB = async () => {
         price: 700000,
         description:
           "Tái hiện khung cảnh Hồ Hoàn Kiếm – trái tim của Hà Nội – với Tháp Rùa và cầu Thê Húc huyền thoại. 290 mảnh ghép cao cấp, mô phỏng mặt hồ xanh biếc và đảo Ngọc. Phù hợp từ 8 tuổi.",
-        images: ["/uploads/thap_rua.jpg"],
+        images: [
+          "/uploads/Hoan Kiem Lake/IMG_7984.JPG",
+          "/uploads/Hoan Kiem Lake/IMG_7986.JPG",
+        ],
         category: categories[0]._id,
         stock: 35,
         sold: 54,
@@ -115,7 +121,10 @@ const seedDB = async () => {
         price: 350000,
         description:
           "Kỳ quan thiên nhiên thế giới Vịnh Hạ Long với những đảo đá vôi sừng sững giữa biển khơi. 210 mảnh ghép, mô phỏng cảnh đảo đá hùng vĩ và mặt biển xanh ngọc. Phù hợp từ 7 tuổi.",
-        images: ["/uploads/hon_trong_mai.jpg"],
+        images: [
+          "/uploads/Ha Long/IMG_7981.JPG",
+          "/uploads/Ha Long/IMG_7985.JPG",
+        ],
         category: categories[1]._id,
         stock: 45,
         sold: 38,
@@ -128,7 +137,10 @@ const seedDB = async () => {
         price: 600000,
         description:
           "Ngọ Môn – cổng chính uy nghi của Hoàng Thành Huế, biểu tượng quyền lực của triều Nguyễn. 260 mảnh ghép, tỷ lệ 1:150, mô phỏng lầu Ngũ Phụng và 5 lối đi truyền thống. Phù hợp từ 9 tuổi.",
-        images: ["/uploads/ngo_mon_hue.jpg"],
+        images: [
+          "/uploads/Ngo Mon/IMG_7962.JPG",
+          "/uploads/Ngo Mon/IMG_7983.JPG",
+        ],
         category: categories[1]._id,
         stock: 30,
         sold: 27,

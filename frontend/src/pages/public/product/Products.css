@@ -286,6 +286,65 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+/* Card carousel */
+.card-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.75rem;
+  height: 1.75rem;
+  border: none;
+  background: rgba(255, 255, 255, 0.88);
+  color: #2c3e50;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 3;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.18);
+}
+
+.product-image-page:hover .card-carousel-btn {
+  opacity: 1;
+}
+
+.card-carousel-prev { left: 0.4rem; }
+.card-carousel-next { right: 0.4rem; }
+
+.card-carousel-btn:hover {
+  background: #fff;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.card-carousel-dots {
+  position: absolute;
+  bottom: 0.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.3rem;
+  z-index: 3;
+}
+
+.card-carousel-dot {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.55);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.card-carousel-dot.active {
+  background: #fff;
+  transform: scale(1.35);
 }
 
 .product-img {

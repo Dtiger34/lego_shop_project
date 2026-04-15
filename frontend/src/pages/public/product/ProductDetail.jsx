@@ -90,6 +90,25 @@ export default function ProductDetail() {
                     'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200"%3E%3Crect fill="%23e0e6ed" width="200" height="200"/%3E%3Ctext x="50%25" y="50%25" font-size="40" text-anchor="middle" dy=".3em"%3E%F0%9F%A7%B1%3C/text%3E%3C/svg%3E';
                 }}
               />
+              {images.length > 1 && (
+                <>
+                  <button
+                    className="pd-carousel-btn pd-carousel-prev"
+                    onClick={() => setSelectedImage((i) => (i === 0 ? images.length - 1 : i - 1))}
+                    aria-label="Ảnh trước"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+                  </button>
+                  <button
+                    className="pd-carousel-btn pd-carousel-next"
+                    onClick={() => setSelectedImage((i) => (i === images.length - 1 ? 0 : i + 1))}
+                    aria-label="Ảnh tiếp"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M9 18l6-6-6-6"/></svg>
+                  </button>
+                  <div className="pd-carousel-counter">{selectedImage + 1} / {images.length}</div>
+                </>
+              )}
             </div>
             {images.length > 1 && (
               <div className="pd-thumbnails">
